@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="pl">
+	<head>
+		<title>EncedoKey - Unlock Storage</title>
+		<meta name="Title" content="EncedoKey Administration Panel" />
+
+		<meta name="Distribution" content="Global" />
+		<meta http-equiv="Content-Language" content="EN" />
+		<meta name="Robots" content="All" />
+		<meta name="googlebot" content="index, follow" />
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta name="revisit-after" content="2 days" />
+		<meta charset="utf-8" />
+		<link rel="shortcut icon" href="favicon.ico" /> 
+		
+		<meta name="HandheldFriendly" content="true" />
+		<meta name="viewport" content="width=device-width, maximum-scale=1.0, user-scalable=no" />
+		<meta http-equiv="x-ua-compatible" content="IE=edge" />
+		
+		<meta name="apple-mobile-web-app-capable" content="yes" /> 
+		<meta name="apple-mobile-web-app-status-bar-style" content="black" /> 
+		
+		<style type="text/css">
+		.clearfix:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+		* html .clearfix { display: inline-block; }
+		*:first-child+html .clearfix { display: inline-block; }
+		*, *:after, *:before { -webkit-box-sizing: border-box; box-sizing: border-box; -moz-box-sizing: border-box; }
+		body { font-family: Arial, Tahoma, sans-serif; background: #fff; }
+		#APPunblocker { display: block; position: fixed; top: 0px; left: 0px; right: 0px; bottom: 0px; backface-visibility: hidden; -webkit-backface-visibility: hidden; z-index: 10000; color: #ccc; text-align: center; font-size: 16px; text-transform: uppercase; z-index: 4; font-family: Arial, Tahoma, sans-serif; text-shadow: 1px 1px 0px #fff; }
+		#APPunblocker .container { min-height: 100%; position: relative; }
+		#APPunblocker .container .wrapper { position: absolute; top: 50%; left: 50%; margin-left: -210px; margin-top: -120px; min-height: 240px; width: 420px; border-radius: 8px; -moz-border-radius: 8px; -webkit-border-radius: 8px; }
+		#APPunblocker .container .wrapper input[type="password"] { padding: 10px; color: #51aca7; text-align: center; font-size: 16px; border: 1px solid #51aca7; border-radius: 8px; -moz-border-radius: 8px; -webkit-border-radius: 8px; margin: 10px auto 0px auto; width: 240px; }
+		
+		#APPunblocker .container .wrapper label { display: block; padding-top: 5px; }
+		#APPunblocker .container .wrapper input[type="checkbox"] { display: inline-block; margin-right: 2px; margin-top: 3px; }
+		#APPunblocker .container .wrapper input[type="button"] { display: inline-block; padding: 15px 25px; max-width: 80%; text-align: center; border: 1px solid #ddd; border-radius: 4px; -moz-border-radius: 4px; -webkit-border-radius: 4px; font-weight: bold; color: #fff; margin: 5px 3px; box-shadow: 0px 0px 10px 1px rgba(0,198,255,0.1); -webkit-transition: all 0.33s ease-in-out; -moz-transition: all 0.33s ease-in-out; -o-transition: all 0.33s ease-in-out; transition: all 0.33s ease-in-out; background: #51aca7; cursor: pointer; font-size: 16px; }
+		#APPunblocker .container .wrapper label span { font-size: 12px; color: #aaa; margin-top: -3px; }
+		#APPunblocker .container .wrapper .logo, #APPheader h1 a { display: inline-block; height: 34px; width: 131px; background: #fff no-repeat center center; padding: 0px 10px 10px 10px; margin: 0px 20px 10px 10px; background-image: url('data:image/jpg;base64,/9j/4QAYRXhpZgAASUkqAAgAAAAAAAAAAAAAAP/sABFEdWNreQABAAQAAABHAAD/4QMraHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLwA8P3hwYWNrZXQgYmVnaW49Iu+7vyIgaWQ9Ilc1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCI/PiA8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJBZG9iZSBYTVAgQ29yZSA1LjAtYzA2MSA2NC4xNDA5NDksIDIwMTAvMTIvMDctMTA6NTc6MDEgICAgICAgICI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBDUzUuMSBXaW5kb3dzIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjMyQTkwQ0I3Q0FDMTExRTNCNzRFREVEMjQ3NThGNTBGIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjMyQTkwQ0I4Q0FDMTExRTNCNzRFREVEMjQ3NThGNTBGIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MzJBOTBDQjVDQUMxMTFFM0I3NEVERUQyNDc1OEY1MEYiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6MzJBOTBDQjZDQUMxMTFFM0I3NEVERUQyNDc1OEY1MEYiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz7/7gAmQWRvYmUAZMAAAAABAwAVBAMGCg0AAAZaAAAIZgAACmkAAAzK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'); }
+		#APPunblockerPIN {  }
+		#APPunblocker .container .wrapper .logo { margin: 26px auto 0px auto; }
+		#APPloader { display: none; background: #f3f3f3; position: fixed; top: 0px; left: 0px; right: 0px; bottom: 0px; backface-visibility: hidden; -webkit-backface-visibility: hidden; z-index: 10000; padding-top: 20%; color: #ccc; text-align: center; font-size: 16px; text-transform: uppercase; z-index: 5; text-shadow: 1px 1px 0px #fff; }
+		#APPloader .spinner { margin: 20px auto; width: 40px; height: 40px; position: relative; text-align: center; -webkit-animation: rotate 2.0s infinite linear; animation: rotate 2.0s infinite linear; }
+		#APPloader .dot1, #APPloader .dot2 { width: 60%; height: 60%; display: inline-block; position: absolute; top: 0; background-color: #51aca7; border-radius: 100%; -webkit-animation: bounce 2.0s infinite ease-in-out; animation: bounce 2.0s infinite ease-in-out; }
+		#APPloader .dot2 { top: auto; bottom: 0px; -webkit-animation-delay: -1.0s; animation-delay: -1.0s; }
+		@-webkit-keyframes rotate { 100% { -webkit-transform: rotate(360deg) }}
+		@keyframes rotate { 100% { transform: rotate(360deg); -webkit-transform: rotate(360deg) }}
+		@-webkit-keyframes bounce { 0%, 100% { -webkit-transform: scale(0.0) } 50% { -webkit-transform: scale(1.0) }}
+		@keyframes bounce { 0%, 100% { transform: scale(0.0); -webkit-transform: scale(0.0); } 50% { transform: scale(1.0); -webkit-transform: scale(1.0); } }
+		body.loading #APPloader { display: block; }
+		#control { display: block; position: absolute; bottom: 20px; left: 0px; right: 0px; text-align: center; font-size: 14px; text-decoration: none; color: #666; z-index: 10; }
+		#disabled { background: #f4f4f4; padding: 10px 0px;  }
+		
+		.btn {
+		  display: block;
+		  position: relative;
+		  width: auto;
+		  height: 80px;
+		  transition: width 0.8s cubic-bezier(0.23, 1, 0.32, 1), height 0.8s cubic-bezier(0.23, 1, 0.32, 1), -webkit-transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+		  transition: width 0.8s cubic-bezier(0.23, 1, 0.32, 1), height 0.8s cubic-bezier(0.23, 1, 0.32, 1), transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+		  -webkit-transform-style: preserve-3d;
+				  transform-style: preserve-3d;
+		  -webkit-transform-origin: 50% 50%;
+			  -ms-transform-origin: 50% 50%;
+				  transform-origin: 50% 50%;
+		  text-align: center; }
+
+		.btn-front {
+		  position: absolute;
+		  display: block;
+		  width: 100%;
+		  height: 100%;
+		  background-color: #FFF;
+		  color: #fff;
+		  cursor: pointer;
+		  -webkit-backface-visibility: hidden;
+				  backface-visibility: hidden;
+		  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+		  transition: background 0.15s ease, line-height 0.8s cubic-bezier(0.23, 1, 0.32, 1); }
+
+		.btn.is-open .btn-front {
+		  pointer-events: none;
+		  line-height: 160px; }
+
+		.btn-back {
+		  position: absolute;
+		  width: 100%;
+		  height: 100%;
+		  background-color: #eee;
+		  color: #222;
+		  -webkit-transform: translateZ(-1px) rotateX(180deg);
+				  transform: translateZ(-1px) rotateX(180deg);
+		  overflow: hidden;
+		  transition: box-shadow 0.8s ease; }
+
+		.btn-back p {
+		  margin-top: 27px;
+		  margin-bottom: 25px; }
+
+		.btn-back button {
+		  padding: 12px 20px;
+		  width: 30%;
+		  margin: 0 5px;
+		  background-color: transparent;
+		  border: 0;
+		  border-radius: 2px;
+		  font-size: 1em;
+		  cursor: pointer;
+		  -webkit-appearance: none;
+		  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+		  transition: background 0.15s ease; }
+		  .btn-back button:focus {
+			outline: 0; }
+		  .btn-back button.yes {
+			background-color: #2196F3;
+			color: #fff; }
+			.btn-back button.yes:hover {
+			  background-color: #51aef6; }
+		  .btn-back button.no {
+			color: #2196F3; }
+			.btn-back button.no:hover {
+			  background-color: #ddd; }
+
+		.btn.is-open .btn-back {
+		  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4); }
+
+		.btn[data-direction="left"] .btn-back, .btn[data-direction="right"] .btn-back {
+		  -webkit-transform: translateZ(-1px) rotateY(180deg);
+				  transform: translateZ(-1px) rotateY(180deg); }
+
+		.btn.is-open {
+		  width: 420px;
+		  height: 160px; }
+
+		.btn[data-direction="top"].is-open {
+		  -webkit-transform: rotateX(180deg);
+				  transform: rotateX(180deg); }
+
+		.btn[data-direction="right"].is-open {
+		  -webkit-transform: rotateY(180deg);
+				  transform: rotateY(180deg); }
+
+		.btn[data-direction="bottom"].is-open {
+		  -webkit-transform: rotateX(-180deg);
+				  transform: rotateX(-180deg); }
+
+		.btn[data-direction="left"].is-open {
+		  -webkit-transform: rotateY(-180deg);
+				  transform: rotateY(-180deg); }
+		</style>		
+	</head>
+
+	<body class="loading">
+		
+		<div id="APP" class="clearfix">
+		
+			<div id="APPloader">
+				<div class="spinner">
+				  <div class="dot1"></div>
+				  <div class="dot2"></div>
+				</div>
+				loading...
+			</div><!-- #APPloader -->
+			
+			<div id="APPunblocker">
+				<div class="container">
+					<div class="wrapper">
+						<p><span class="logo"></span><!-- .logo --></p>
+						<div class="btn">
+							<div id="disabled" class="btn-back">
+								<input type="password" name="passwd" id="APPunblockerPIN" placeholder="Type PASSWORD here">
+								<label class="clearfix" for="APPunblockerRO">
+									<input type="checkbox" name="ro" value="false" id="APPunblockerRO">
+									<span>Enable write permissions</span>
+								</label><!-- .clearfix -->
+								<input type="button" value="Unlock" id="unlockDevice" class="yes">
+							</div><!-- #disabled -->
+							<div id="enabled" class="btn-front">
+								<input type="button" value="Lock storage" id="lockDevice">
+							</div><!-- #enabled -->
+						</div><!-- .btn -->
+					</div><!-- .wrapper -->
+				</div><!-- .container -->
+			</div><!-- #APPunblocker -->
+			
+			<a href="panel.htm" id="control">Control Panel</a>
+			
+			<div id="APPwrapper">
+				
+				<div id="APPcontent" class="clearfix"></div><!-- #APPcontent -->
+				
+				<div id="APPactivities" class="index">
+				
+					<div id="start" class="activity" title="Welcome to EncedoKey!">
+						
+					</div><!-- .activity -->
+				
+				</div><!-- #APPactivities -->
+			</div><!-- #APPwrapper -->
+				
+		</div><!-- #APP -->
+	
+		<script type="text/javascript" src="Assets/jqu.js"></script>
+		
+		<script type="text/javascript">
+		;(function( $, window, undefined ){
+
+			var bodyElement = $(document.body);
+			var encedo = $('#APP').encedoApp({ 'page': false });
+			CDD.css(bodyElement);		
+
+			var btn = document.querySelector( '.btn' );
+
+			var btnFront = btn.querySelector( '.btn-front' ),
+				btnYes = btn.querySelector( '.btn-back .yes' );
+
+			btnFront.addEventListener( 'click', function( event ) {
+				var mx = event.clientX - btn.offsetLeft,
+					my = event.clientY - btn.offsetTop;
+
+				var w = btn.offsetWidth,
+					h = btn.offsetHeight;
+
+				var directions = [
+					{ id: 'top', x: w/2, y: 0 },
+					{ id: 'right', x: w, y: h/2 },
+					{ id: 'bottom', x: w/2, y: h },
+					{ id: 'left', x: 0, y: h/2 }
+				];
+
+				directions.sort( function( a, b ) {
+					return distance( mx, my, a.x, a.y ) - distance( mx, my, b.x, b.y );
+				} );
+
+				btn.setAttribute( 'data-direction', directions.shift().id );
+				btn.classList.add( 'is-open' );
+			} );
+
+			btnYes.addEventListener( 'click', function( event ) {
+				btn.classList.remove( 'is-open' );
+			} );
+
+			function distance( x1, y1, x2, y2 ) {
+				var dx = x1-x2;
+				var dy = y1-y2;
+				return Math.sqrt( dx*dx + dy*dy );
+			}			
+
+			(function(enc){
+			
+				enc.api('env/', function(status, res) {
+					bodyElement.removeClass('env1 env2 env3 env4');
+					bodyElement.addClass('env' + res.val);
+				});
+			
+				var unblocker = $('#APPunblocker');
+				var unblocking = $('#APPunblockerPIN');
+				var unblockingRO = $('#APPunblockerRO');
+				var blocking = $('#lockDevice');
+				var blocking2 = $('#unlockDevice');
+				var enabled_div = $('#enabled');
+				var disabled_div = $('#disabled');
+				
+				disabled_div.hide();
+				enabled_div.hide();
+				
+				function checkWhat() {
+					enc.api('api/info', function(status, res) {
+						disabled_div.show();
+						enabled_div.show();
+						if(res && res.status && res.status.secure_storage && res.status.secure_storage.indexOf('enabled') != -1) {
+						} else {
+							$(btnFront).trigger('click');
+						}
+					});
+				}
+				
+				checkWhat();
+
+				blocking.click(function(e){
+					if(e) e.preventDefault();
+					enc.api('api/lock/encstorage', function(status, res) {
+						checkWhat();
+					});
+				});
+				
+				blocking2.click(function(e){
+					//if(e) e.preventDefault();
+					var pass = unblocking.val();
+					enc.api('api/unlock/encstorage', function(status, res) {
+						unblocking.val('');
+						checkWhat();
+					}, 'POST', { 'passwd': pass, 'ro': (unblockingRO[0].checked ? false : true) });
+				});
+				
+				unblocking.keyup(function (e) {
+					if(e.keyCode == 13) {
+						blocking2.trigger('click');
+					}
+				});
+				
+			})( encedo );
+			
+		})( jQuery, window );
+		</script>
+	</body>
+</html>

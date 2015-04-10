@@ -1,0 +1,1863 @@
+<!DOCTYPE html>
+<html lang="pl">
+	<head>
+		<title>EncedoKey - Control Panel</title>
+		<meta name="Title" content="EncedoKey Administration Panel" />
+
+		<meta name="Distribution" content="Global" />
+		<meta http-equiv="Content-Language" content="EN" />
+		<meta name="Robots" content="All" />
+		<meta name="googlebot" content="index, follow" />
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta name="revisit-after" content="2 days" />
+		<meta charset="utf-8" />
+		<link rel="shortcut icon" href="favicon.ico" /> 
+		
+		<meta name="HandheldFriendly" content="true" />
+		<meta name="viewport" content="width=device-width, maximum-scale=1.0, user-scalable=no" />
+		<meta http-equiv="x-ua-compatible" content="IE=edge" />
+		
+		<meta name="apple-mobile-web-app-capable" content="yes" /> 
+		<meta name="apple-mobile-web-app-status-bar-style" content="black" /> 
+		
+		<style type="text/css">
+		#APPunblocker { display: block; background: #f3f3f3; position: fixed; top: 0px; left: 0px; right: 0px; bottom: 0px; backface-visibility: hidden; -webkit-backface-visibility: hidden; z-index: 10000; color: #ccc; text-align: center; font-size: 16px; text-transform: uppercase; z-index: 4; font-family: Arial, Tahoma, sans-serif; text-shadow: 1px 1px 0px #fff; }
+		#APPunblocker .container { min-height: 100%; position: relative; }
+		#APPunblocker .container .wrapper { position: absolute; top: 50%; left: 50%; margin-left: -160px; margin-top: -100px; height: 200px; background: #fff; width: 320px; border-radius: 8px; -moz-border-radius: 8px; -webkit-border-radius: 8px; }
+		#APPunblocker .container .wrapper input { padding: 10px; color: #888; text-align: center; font-size: 22px; border: 1px solid #ccc; border-radius: 8px; -moz-border-radius: 8px; -webkit-border-radius: 8px; margin: 10px auto 0px auto; width: 240px; }
+		#APPunblocker .container .wrapper .logo, #APPheader h1 a { display: inline-block; height: 34px; width: 131px; background: #fff no-repeat center center; padding: 0px 10px 10px 10px; margin: 0px 20px 10px 10px; background-image: url('data:image/jpg;base64,/9j/4QAYRXhpZgAASUkqAAgAAAAAAAAAAAAAAP/sABFEdWNreQABAAQAAABHAAD/4QMraHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLwA8P3hwYWNrZXQgYmVnaW49Iu+7vyIgaWQ9Ilc1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCI/PiA8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJBZG9iZSBYTVAgQ29yZSA1LjAtYzA2MSA2NC4xNDA5NDksIDIwMTAvMTIvMDctMTA6NTc6MDEgICAgICAgICI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBDUzUuMSBXaW5kb3dzIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjMyQTkwQ0I3Q0FDMTExRTNCNzRFREVEMjQ3NThGNTBGIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjMyQTkwQ0I4Q0FDMTExRTNCNzRFREVEMjQ3NThGNTBGIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MzJBOTBDQjVDQUMxMTFFM0I3NEVERUQyNDc1OEY1MEYiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6MzJBOTBDQjZDQUMxMTFFM0I3NEVERUQyNDc1OEY1MEYiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz7/7gAmQWRvYmUAZMAAAAABAwAVBAMGCg0AAAZaAAAIZgAACmkAAAzK/9sAhAAEAwMDAwMEAwMEBgQDBAYGBQQEBQYHBgYGBgYHCgcICAgIBwoKCwwMDAsKDAwMDAwMERERERETExMTExMTExMTAQQEBAgHCA4KCg4UDg4OFBQTExMTFBMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExP/wgARCAAiAIMDAREAAhEBAxEB/8QA0wAAAgMBAQEAAAAAAAAAAAAAAAMCBAUGAQcBAQEAAwEBAAAAAAAAAAAAAAABAgMEBQYQAAIDAAECBgMBAAAAAAAAAAIDAAEEEhEUMEBQMhMFITE0MxEAAgAEAgUIBggHAAAAAAAAAQIAERIDITEQQVETBHGBkbEiMkJyYaHBUoIjQGKSssIzcxRDU2ODJESEEgABAwUAAAAAAAAAAAAAAAARABABMEBQYPETAQABAwIFAwUBAQEAAAAAAAERACExQVEQYXGBkUCh0TBQ8LHhIMHx/9oADAMBAAIRAxEAAAH7qIHFVGLaKhIcIGiiJeKJ6aRnGiZwwumAm4tTPmystNpEzZpa+y4c+nQrXMtGFpZkS6c8nQrh7vN5zf5krg/Hb1PH9HdOeToVUYCaKzHHhbMwkSIno0qkwPRaaayAAAAAAAAAAA//2gAIAQEAAQUCa6lTruinfJYaNLh57Bimg4Pna2Ueobc6lTrtin8y56DO9DUw2AsBZrbK0NWUX+dkb+NWT+aOvhYjQizWhRq35W7K+0wlL2ZnbEe79wf1Hh8ie4ZKStuvs88HMgCyfzTT745OnuMeDVn05vqt2Z+H6vWjYj3Qf9oy+i+NxlGl/eKimMZM1WOefFzeLmLqtayjaNTu8VFMYywcCjvVZztematXGjI9Vca8l//aAAgBAgABBQLzHGcLnC5xvxquEdXLOrhHXT0j/9oACAEDAAEFAvME2qlaQud0EF43fimBclZjG15TG05iE/SP/9oACAECAgY/AtV//9oACAEDAgY/ArgLrCsYYozif//aAAgBAQEGPwJVAL3X7qCJ0WvLU3XKCjru7y5odm0GA1qyFB8Vx+qQMTNtH9CMQfWIrXkIOYI1GP8AGQG3/McyB5JQN5aVl222y5mlAEi9xu4gzMTptD6tTdcoNu4u7vDGnOY2gxcFuilGp7U55TifE2xu9dxDMDlEG4xkgEyYqS0ttNW8Jq6BAXiUChsFuKZrPYdmi+Tmq21HJidHDnWaxzSnFryjRxgXCpbZ53mnsgKuCjARu2JrwwCM2eXdEOysWkihKUcnM1YAckGm4TLEyR8PVFhLTfOVnDKVZTKg7RtAi/8AqfhESMWuG8K32X4UBcezRcQ61MZ/629+KL9YnIW+ox3PWYDqvaGRxi15Ro4ry2PvnQ9y0qsjqqmbUnCc9R2xcElYhMRV7/Kp2bIF5aMJ4VajzQnEXipAqLY44gxf/U/CNCtq/c3B02yNDk5AGP8AjlG/RS9twFuKuYpyIjAOTs3bz6oJa3u08NR7R5hFtWEiBiNHEBx8u5bRZ/aii+jEj+IgqDemQxiSLcb+246wI/cItakUXFGeBmCOmMnn7u7efVBnaNtPCWOJ5ovB5gl5jssfCNginh7bO+1lKIOUt7I3Ib5g7e8/qTqn0x8+26NrkrOvMVnG6RGW0fzLjCns7ADjjGXo+hf/2gAIAQEDAT8hclwt5Yyq2A1WpsDqnp/Gp3YCwbsAyUT0psB6GPeKRx0z2JInyVdDEokZQNEoeohQfD2hU52oYVIN7zIexoUmKZaZzgNVqezapHuP+KRFDJoNhZKDgIjKs0datYam51gQ5k0BfZjFXYPdpop27tIfKTTsSAp004fpAFSe/C0tTfC8hxw7/MjSQesCgyggbBYrAdpyrGRmLVDC1ZVZGrgRMK4FpaotQMhozFyFe80oBCRsjRFzI0byOvSBwDCC+1mvxHdSTji6Z2GvxfPUbOa4omzl448V/C8L6u9hOxGQsaPBsWMCYuFzzSSdvdwiF+NLUJA1Jtt2veeCIfj4ie9uBZ0T2K5PyUmvUkZMLXMIcqsklwb7v+9II2LDmTJHmnwCiZHgzogW6L4dySi1kc0xzIdyKQEixYh1SUEUXo9BtYlJVmy9zbRVaI4CbpmO7Ux8YCJDMoUUrljnIAftRAuKGr8FG1qsRPJw8jZ1itZbybqjNiYxXJY8NvRf/9oACAECAwE/IfUCaQ4SRP1gigKMinQPtP8A/9oACAEDAwE/IfUJyz0X9FMQM9vhQuH2fiobb7Q/H1pABEDMb8udTqz3/jUHR5/lHItf19p//9oADAMBAAIRAxEAABAYPBaabBIYYByrYDgNoAMYGgMB7QDJLTLJgAAAAAAAAf/aAAgBAQMBPxBwKCIM3QSxzRltQC0txiG4gnnbUY0jC2bMdEmyNkKCHaAnbEuZqnlUwgjSm5NRJQJCahnIyU2qCiJG+9rg6TS8BDJKDY4nVeVQRDMgJUoAMqg8FQ2SXDxsCT0VE9W7KxaiezYRyFPDw1wHLjUAnMJdmOZ+gGsUt4E2bMyRMzpGaOJkQRsgJ7K8qBMtuXgjYYkKbTwiClI5HHVX6G3BQmBv0qE3KVX5zbgwySWLMQxkKJSG+BgHQKZLiG+NMjFIEzWqp3mPIO5SMUv2yFUIBQCgrQHxDSfZYkZcO50DoEiNkR0q4M5FyOz7VwKIbptCuBMI3HThKndiO2JGLbgySW9DIbEhcYr85twE4wWVgBJ8HBwt5INCJsBs71FbRwqmJBeIKu+KTOYbEJDSRri5uwmVu3495pEgZ19reD28nlXNf3J25qKSuy4dSMO+ZExStxQlwZECO4KK9SVKXlCHETPcKMw2MALicFPUTYEh1xcpKJvhi4BSUEpnhal9IPMUY81HdrKLgEJByI2xFW6tsC1ZSs72olxGS682U6nKiymCYgCC461MCReFyQUNgn3qVmbDhJphopmgpnMMWybqaRXKpxDAnTJNUEkQTlivhP8AI9F//9oACAECAwE/EPSP+CJMdQoSUjufNI5Pc+alAt1PoTU08DhHioi6VCLnb+1JU+P7SKTT6EcH/EcI4xU1HpP/2gAIAQMDAT8Q9RLRwsZWMmanSWwz7UYRWM6dByc7gbEuRGPrTwCJktdq0sdKRxkE7o3LTajOJNtQ6f8AinjQXXvdG279p//Z'); }
+		
+		#APPunblocker .container .wrapper .logo { margin: 30px auto 10px auto; }
+		#APPloader { display: none; background: #f3f3f3; position: fixed; top: 0px; left: 0px; right: 0px; bottom: 0px; backface-visibility: hidden; -webkit-backface-visibility: hidden; z-index: 10000; padding-top: 20%; color: #ccc; text-align: center; font-size: 16px; text-transform: uppercase; z-index: 5; font-family: Arial, Tahoma, sans-serif; text-shadow: 1px 1px 0px #fff; }
+		#APPloader .spinner { margin: 20px auto; width: 40px; height: 40px; position: relative; text-align: center; -webkit-animation: rotate 2.0s infinite linear; animation: rotate 2.0s infinite linear; }
+		#APPloader .dot1, #APPloader .dot2 { width: 60%; height: 60%; display: inline-block; position: absolute; top: 0; background-color: #51aca7; border-radius: 100%; -webkit-animation: bounce 2.0s infinite ease-in-out; animation: bounce 2.0s infinite ease-in-out; }
+		#APPloader .dot2 { top: auto; bottom: 0px; -webkit-animation-delay: -1.0s; animation-delay: -1.0s; }
+		@-webkit-keyframes rotate { 100% { -webkit-transform: rotate(360deg) }}
+		@keyframes rotate { 100% { transform: rotate(360deg); -webkit-transform: rotate(360deg) }}
+		@-webkit-keyframes bounce { 0%, 100% { -webkit-transform: scale(0.0) } 50% { -webkit-transform: scale(1.0) }}
+		@keyframes bounce { 0%, 100% { transform: scale(0.0); -webkit-transform: scale(0.0); } 50% { transform: scale(1.0); -webkit-transform: scale(1.0); } }
+		body.loading #APPloader { display: block; }
+		</style>
+		<link rel="stylesheet" href="Assets/base.css" media="screen" />	
+		
+	</head>
+
+	<body class="loading">
+		
+		<div id="APP" class="clearfix">
+		
+			<div id="APPloader">
+				<div class="spinner">
+				  <div class="dot1"></div>
+				  <div class="dot2"></div>
+				</div>
+				loading...
+			</div><!-- #APPloader -->
+		
+			<div id="APPheader" class="clearfix">
+				
+				<div class="wraping clearfix">
+					<h1><a href="#" class="openActivity" rel="start"><span class="index">Encedo</span></a></h1>
+					<div id="APPtools">
+						<a class="icon icon-menu-1 menu" title="Click to see menu"><span class="index">Menu</span></a><!-- .menu-->
+						<a href="#" class="icon icon-cogs openActivity" rel="setup" title="EncedoKey settings"><span class="index">Settings</span></a><!-- .refresh-->
+						<a href="#" class="icon icon-arrows-ccw refresh" title="Refresh EncedoKey"><span class="index">Refresh</span></a><!-- .refresh-->
+					</div><!-- #APPtools -->
+					
+					<div id="APPmenu" class="hide">
+						<ul>
+							<li><a href="#" rel="otpcodes" class="openActivity"><span class="icon icon-key"></span> OTP codes</a></li>
+							<li><a href="#" rel="keysmanager" class="openActivity"><span class="icon icon-calendar"></span> Keys Manager</a></li>
+							<li><a href="#" rel="message" class="openActivity"><span class="icon icon-diamond"></span> Messaging</a></li>
+							<li><a href="#" rel="files" class="openActivity"><span class="icon icon-attach-2"></span> File processing</a></li>
+<!--							<li><a href="#" rel="randomstring" class="openActivity"><span class="icon icon-note"></span> Random </a></li>  -->
+						</ul>
+						<a href="#" id="APPmenuHide"> <i class="icon icon-up-open"></i> hide</a>
+					</div><!-- #APPmenu -->
+				
+				</div><!-- .wraping-->				
+				
+			</div><!-- #APPheader -->
+				
+			<div id="APPwrapper">
+				
+				<div id="APPcontent" class="clearfix"></div><!-- #APPcontent -->
+				
+				<div id="APPactivities" class="index">
+				
+					<div id="start" class="activity" title="Welcome to EncedoKey!">
+					
+						<h2><span>Welcome to EncedoKey!</span></h2>
+					
+						<p>EncedoKey is simple and innovative USB device to help you manage your online privacy. It is an encrypted storage, can encrypt/decrypt files on-fly and authorise you on the Web services using simple PIN code. Our goal is to change the way we use the Internet.</p>
+						
+						<div class="buttonWrapper">
+							<a href="#" class="button goNext openActivity" rel="setup"><span>Setup <i class="icon icon-cog"></i></span></a>
+						</div><!-- .buttonWrapper -->
+
+						<p>Have you ever considered how much you are paying for lack of online privacy? It's time to start taking care of it! Consider using EncedoKey now. Take a tour and check how EncedoKey can help you.</p>
+						
+						
+						<div class="buttonWrapper">
+							<a href="#" class="button goNext openActivity" rel="takeatour"><span>Take a tour <i class="icon icon-globe"></i></span></a>
+							<span class="el">or</span>
+							<a href="#" class="button noncta goNext openActivity" rel="credits"><span>See credits <i class="icon icon-users"></i></span></a>
+						</div><!-- .buttonWrapper -->
+						
+					</div><!-- .activity -->
+					
+					<div id="takeatour" class="activity" title="Take a tour with EncedoKey!">
+					
+						<h2><span><i class="icon icon-globe"></i> Take a tour with EncedoKey!</span></h2>
+						
+						<h3><a href="#" class="openActivity" rel="otpcodes"><span>OTP codes <i class="icon icon-key"></i></span></a></h3>
+						<p>A one-time password (OTP) is a password that is valid for only one login session or transaction. OTPs avoid a number of shortcomings that are associated with traditional (static) passwords. The most important shortcoming that is addressed by OTPs is that, in contrast to static passwords, they are not vulnerable to replay attacks. [wikipedia]</p>
+						
+						<h3><a href="#" class="openActivity" rel="randomstring"><span>Generating Random String <i class="icon icon-note"></i></span></a></h3>
+						<p>Aliquam sollicitudin accumsan volutpat. Nulla at justo ac nunc egestas eleifend. Nunc faucibus, justo sit amet adipiscing faucibus, nisi velit ultricies mi, fringilla porttitor enim tortor sed urna.</p>
+						
+						
+						<h3><a href="#" class="openActivity" rel="keysmanager"><span>Keys Manager <i class="icon icon-calendar"></i></span></a></h3>
+						<p>Key management is the management of cryptographic keys in a cryptosystem. This includes dealing with the generation, exchange, storage, use, and replacement of keys. Successful key management is critical to the security of a cryptosystem. [wikipedia]</p>
+						
+						<h3><a href="#" class="openActivity" rel="message"><span>Encrypt/decrypt message <i class="icon icon-diamond"></i></span></a></h3>
+						<p>Donec pellentesque justo vitae laoreet gravida. In pharetra, nisl at laoreet sagittis, orci nisl posuere ante, sed molestie magna augue vel tellus. Nulla facilisi. Nullam scelerisque, arcu a feugiat tempus, leo purus tincidunt nisl, id viverra nunc orci laoreet velit. Mauris luctus, arcu id adipiscing adipiscing, augue eros condimentum leo, eget sagittis risus urna id nunc. Nunc nec euismod diam.</p>
+						
+						<h3><a href="#" class="openActivity" rel="lockunlock"><span>Lock/Unlock device <i class="icon icon-lock"></i></span></a></h3>
+						<p>Etiam orci libero, pulvinar vitae justo id, ornare iaculis metus. Proin varius velit dolor, at accumsan dolor sed quam eget mauris suscipit varius sed a felis.</p>
+						
+						<div class="buttonWrapper">
+							<a href="#" class="button noncta backButton openActivity" rel="start"><span><i class="icon icon-left-open"></i> back</span></a>
+							<span class="el">or</span>
+							<a href="#" class="button goNext openActivity" rel="credits"><span>See credits <i class="icon icon-users"></i></span></a>
+						</div><!-- .buttonWrapper -->
+						
+					</div><!-- .activity -->
+					
+					<div id="otpcodes" class="activity" title="List of OTP codes" data-encedo-only="true">
+					
+						<h2><span><i class="icon icon-key"></i> OTP codes</span></h2>
+						<p>A one-time password (OTP) is a password that is valid for only one login session or transaction. OTPs avoid a number of shortcomings that are associated with traditional (static) passwords. The most important shortcoming that is addressed by OTPs is that, in contrast to static passwords, they are not vulnerable to replay attacks. [wikipedia]</p>
+						
+						<h3 id="otpcodes_timestamp">please wait...</h3>
+						<div id="otpcodes_timer"></div><!-- .progressbar -->
+						
+						<div id="otpcodesCol" class="collection" rel="otpcodes">
+							
+							<div class="element clearfix index otpCode">
+								<span class="index"></span></a>
+								<a href="#" class="button remove icon icon-cancel-2" title="Remove element from list" rel="{{id}}"><span class="index"></span></a>
+								<a href="#" id="otpcode_{{id}}" class="getOTPCode" title="Show OTP code" rel="showotpcode_{{id}}">show code</a> 
+								<a href="#" id="showotpcode_{{id}}" class="showOTPCode hidden" title="Show OTP code" rel="">{{code}}</a> 
+								<h3>{{descr}}</h3>
+								{{#type}}<p>{{type}}</p>{{/type}}
+							</div><!-- .element -->
+							
+						</div><!-- .collection -->
+
+						<div class="buttonWrapper"><a href="#" class="button addButton openActivity" rel="otpcodes_new"><span>Create new <i class="icon icon-plus"></i></span></a></div><!-- .buttonWrapper -->
+						
+					</div><!-- .activity -->
+					
+					<div id="otpcodes_new" class="activity" title="Creating new OTP" data-encedo-only="true">
+					
+						<h2><span><i class="icon icon-key"></i> <i class="icon icon-plus"></i> Creating new OTP</span></h2>
+						
+						<p>Our OTPs are compatible with RFC 6238. To import profile, type simple 'description' and paste associated 'secret'. To generate new credentials type description. Now you can hit 'Create now'.</br>Already a user of Google Authenticator? EncedoKey work almost the same way. Replace smartphone with USB dongle.</p>
+						
+						<form action="#" id="otpcodes_new_form">
+						
+							<fieldset>
+								
+								<label for="otpDescription">
+									<span>Description</span>
+									<input type="text" name="descr" id="otpDescription" placeholder="your description" title="OTP description" data-nonempty="true" data-regexp="simpletext" data-spacesafe="true" data-maxlength="64">
+								</label><!-- -otpLabel -->
+								
+								<label for="otpSecret">
+									<span>Secret</span>
+									<input type="text" name="secret" id="otpSecret" placeholder="type OTP secret" title="OTP secret" data-nonempty="false" data-regexp="base32" data-spacesafe="true" data-maxlength="64">
+								</label><!-- -otpLabel -->
+								
+								<label for="otpType">
+									<span>Type</span>
+									<div class="wrapper">
+										<select name="type" title="OTP type" id="otpType" data-nonempty="true" data-regexp="simple">
+											<option value="totp">totp (default)</option>
+											<option value="hotp">hotp</option>
+										</select>
+									</div><!-- .selectWrapper -->
+								</label><!-- -otpLabel -->
+								
+								<div class="buttonWrapper">
+									<a href="#" class="button noncta backButton openActivity" rel="otpcodes"><span><i class="icon icon-left-open"></i> back</span></a>
+									<span class="el">or</span>
+									<a href="#" class="button addButton submit makeAction" rel="otpcodes_create"><span>Create now <i class="icon icon-ok"></i></span></a>
+								</div><!-- .buttonWrapper -->
+							
+							</fieldset>
+						
+						</form>
+						
+					</div><!-- .activity -->
+					
+					<div id="otpcodes_after" class="activity" data-encedo-only="true">
+					
+						<h2><span><i class="icon icon-attention"></i> Important information</span></h2>
+						<p>You have just create new OTP code. Please note the 'secret' printed below. It`s the only time you can see it!</p>
+						
+						<h3>Secret:</h3>
+						<p><strong id="otp_secret"></strong></p>
+						
+						<div class="buttonWrapper">
+							<a href="#" class="button noncta backButton openActivity" rel="otpcodes"><span><i class="icon icon-left-open"></i> back</span></a>
+						</div><!-- .buttonWrapper -->
+						
+					</div><!-- .activity -->
+					
+					<div id="randomstring" class="activity" data-encedo-only="true">
+					
+						<h2><span><i class="icon icon-note"></i> Random string</span></h2>
+						<p>Aliquam sollicitudin accumsan volutpat. Nulla at justo ac nunc egestas eleifend. Nunc faucibus, justo sit amet adipiscing faucibus, nisi velit ultricies mi, fringilla porttitor enim tortor sed urna.</p>
+						
+						<div class="buttonWrapper">
+							<a href="#" class="button generate openActivity" rel="randomstring_generate"><span>Generate string <i class="icon icon-right-open"></i></span></a>
+							<span class="el">or</span>
+							<a href="#" class="button generate openActivity" rel="randomstring_password"><span>Generate password <i class="icon icon-right-open"></i></span></a>
+							
+						</div><!-- .buttonWrapper -->
+						
+					</div><!-- .activity -->
+					
+					<div id="randomstring_generate" class="activity" data-encedo-only="true">
+					
+						<h2><span><i class="icon icon-note"></i> <i class="icon icon-plus"></i> Generated string</span></h2>
+						
+						<p>Mauris ante sem, condimentum in tortor et, tincidunt dapibus lectus. Nunc egestas, nisl ut tincidunt suscipit, nibh orci adipiscing risus, vel facilisis sapien augue id eros. Duis eu eros nec libero elementum fringilla.</p>
+						
+						<label for="randomstring_generate_container"><textarea rows="14" cols="10" id="randomstring_generate_container" class="selectOnClick"></textarea></label>
+						
+						<div class="buttonWrapper">
+							<a href="#" class="button noncta backButton openActivity" rel="randomstring"><span><i class="icon icon-left-open"></i> back</span></a>
+							<span class="el">or</span>
+							<a href="#" class="button generate makeAction" rel="randomstring_generate"><span>Generate more <i class="icon icon-ok"></i></span></a>
+						</div><!-- .buttonWrapper -->
+						
+					</div><!-- .activity -->
+					
+					<div id="randomstring_password" class="activity" data-encedo-only="true">
+					
+						<h2><span><i class="icon icon-note"></i> <i class="icon icon-plus"></i> Generated password</span></h2>
+						
+						<p>Mauris ante sem, condimentum in tortor et, tincidunt dapibus lectus. Nunc egestas, nisl ut tincidunt suscipit, nibh orci adipiscing risus, vel facilisis sapien augue id eros. Duis eu eros nec libero elementum fringilla.</p>
+						
+						<div class="collection" rel="randomstring_password">
+							
+							<div class="element index">
+								<textarea rows="1" cols="10" class="selectOnClick">{{password}}</textarea>
+							</div><!-- .element -->
+							
+						</div><!-- .collection -->
+						
+						<div class="buttonWrapper">
+							<a href="#" class="button noncta backButton openActivity" rel="randomstring"><span><i class="icon icon-left-open"></i> back</span></a>
+							<span class="el">or</span>
+							<a href="#" class="button generate makeAction" rel="randomstring_password"><span>Generate more <i class="icon icon-ok"></i></span></a>
+						</div><!-- .buttonWrapper -->
+						
+					</div><!-- .activity -->
+	
+					<div id="keysmanager" class="activity" data-encedo-only="true">
+					
+						<h2><span><i class="icon icon-calendar"></i> Keys Manager</span></h2>
+						<p>Key Manager is the management of cryptographic keys in a cryptosystem. This includes dealing with the generation, exchange, storage, use, and replacement of keys. Successful key management is critical to the security of a cryptosystem. [wikipedia]</p>
+						
+						<div class="collection" rel="keysmanager">
+							
+							<div class="keyElement index element">
+								<a href="#" class="button remove icon icon-cancel-2" title="Remove element from list" rel="{{id}}"><span class="index"></span></a>
+								<a href="#" class="button show openIfClicked icon icon-lock" title="Show public key" rel="key_pubkey_{{id}}"><span class="index"></span></a>
+								<a href="#" class="button icon icon-attach-2 sendFileEmail" title="Send encrypted file to user" rel="{{pubkey}}" data-title="{{descr}}" data-descr="{{email}}" data-type="{{type}}"><span class="index"></span></a>
+								<a href="#" class="button icon icon-mail sendViaEmail" title="Send public key via email" rel="{{pubkey}}" data-title="{{descr}}" data-descr="{{email}}" data-type="{{type}}"><span class="index"></span></a>
+								<a href="#" class="button icon icon-comment sendMessage" title="Send message via email" rel="{{pubkey}}" data-descr="{{email}}"><span class="index"></span></a>
+								{{#prvkey}}<a class="button icon icon-key" title="Private key is available"><span class="index"></span></a>{{/prvkey}}
+								<h3>{{descr}}</h3>
+								{{#email}}<p>{{email}}</p>{{/email}}
+								<textarea rows="1" cols="10" class="selectOnClick index" id="key_pubkey_{{id}}">{{pubkey}}</textarea>
+							</div><!-- .element -->
+							
+						</div><!-- .collection -->
+						
+						<div class="buttonWrapper"><a href="#" class="button addButton openActivity" rel="keysmanager_new"><span>Create new <i class="icon icon-plus"></i></span></a></div><!-- .buttonWrapper -->
+						
+					</div><!-- .activity -->
+					
+					<div id="keysmanager_new" class="activity" data-encedo-only="true">
+					
+						<h2><span><i class="icon icon-calendar"></i> <i class="icon icon-plus"></i> Creating new Key</span></h2>
+						
+						<p>You can generate new keys or import public/private keypair. Choose type of the key, enter simple description and contact (email preferable). To import keys, enable check box and copy-paste keypairs. If only public key is going to be imported, let 'Private key' field be blank.</p>
+						
+						<form action="#" id="keysmanager_new_form">
+						
+							<fieldset>
+								
+								<label for="keyLabel">
+									<span>Description</span>
+									<input type="text" name="descr" id="keyLabel" title="Key description" placeholder="Key description or owner name" data-nonempty="true" data-regexp="simpletext" data-spacesafe="true" data-maxlength="64">
+								</label><!-- -otpLabel -->
+								
+								<label for="keyDescription">
+									<span>Contact</span>
+									<input type="text" name="contact" id="keyDescription" title="Email address" placeholder="Email address" data-nonempty="false" data-regexp="email" data-spacesafe="true" data-maxlength="64">
+								</label><!-- -otpLabel -->
+								
+								<label for="keyType">
+									<span>Type</span>
+									<div class="wrapper">
+										<select name="type" id="keyType" title="Key type" data-nonempty="true" data-regexp="simple" data-maxlength="32">
+											<option value="curve25519">curve25519 (default)</option>
+											<option value="ED25519">ED25519</option>
+											<option value="curve41417">curve41417</option>
+										</select>
+									</div><!-- .selectWrapper -->
+								</label><!-- -otpLabel -->
+								
+								<label for="keyImport" class="withCheckbox">
+									<input type="checkbox" name="import" id="keyImport" value="1" class="openIfChecked" rel="keymanager_form_import">
+									<span>Import key pair</span>
+								</label><!-- -otpLabel -->
+								
+								<div id="keymanager_form_import" class="index">
+
+									<label for="keyPubKey">
+										<span>Public key (only for import)</span>
+										<input type="text" name="pubkey" id="keyPubKey" title="Public key" placeholder="paste public key here for import" data-regexp="base64" data-maxlength="138">
+									</label><!-- -otpLabel -->
+									
+									<label for="keyPrvKey">
+										<span>Private key (only for import)</span>
+										<input type="text" name="prvkey" id="keyPrvKey" title="Private key" placeholder="paste private key here for import" data-regexp="base64" data-maxlength="86">
+									</label><!-- -otpLabel -->
+								
+								</div><!-- #keymanager_form_import -->
+								
+								<div class="buttonWrapper">
+									<a href="#" class="button noncta backButton openActivity" rel="keysmanager"><span><i class="icon icon-left-open"></i> back</span></a>
+									<span class="el">or</span>
+									<a href="#" class="button addButton submit makeAction" rel="keysmanager_create"><span>Create new <i class="icon icon-ok"></i></span></a>
+								</div><!-- .buttonWrapper -->
+							
+							</fieldset>
+						
+						</form>
+						
+					</div><!-- .activity -->
+					
+					<div id="files" class="activity" data-encedo-only="true">
+					
+						<h2><span><i class="icon icon-attach-2"></i> File encrypt/decrypt</span></h2>
+						<p>This application will let you process a file. I think the choice is obvious :)</p>
+						
+						<div class="buttonWrapper">
+							<a href="#" class="button generate openActivity" rel="file_encrypt"><span>Encrypt file<i class="icon icon-right-open"></i></span></a>
+							<span class="el">or</span>
+							<a href="#" class="button generate openActivity" rel="file_decrypt"><span>Decrypt file<i class="icon icon-right-open"></i></span></a>
+							
+						</div><!-- .buttonWrapper -->
+						
+					</div><!-- .activity -->
+					
+					<div id="file_encrypt" class="activity" data-encedo-only="true">
+					
+						<h2><span><i class="icon icon-attach-2"></i> <i class="icon icon-right-open"></i> File encrypt</span></h2>
+						
+						<p>It`s as easy as it only can be. Choose the recipient of the encrypted file. Then to provie an extra secyrity type the password (it`s optional). </p>
+						
+						<form method="POST" action="//encedokey.com/stream/encrypt" id="file_encrypt_form" enctype="multipart/form-data">
+						
+							<fieldset>
+							
+								<label for="file_receiver">
+									<span>Receiver address</span>
+									<div class="wrapper">
+										<select name="pubkey" id="file_receiver" class="collection" rel="filemanager">
+											<option class="prototype index" value="{{pubkey}}" rel="{{email}}" data-type="{{type}}">{{descr}} ({{pubkeyshort}}) {{#prvkey}}+ prvkey{{/prvkey}}</option>
+										</select>
+									</div><!-- .selectWrapper -->
+								</label><!-- file_receiver -->
+								
+								<input type="hidden" value="" name="keytype" id="file_receiver_type">
+								<input type="hidden" value="" name="pipeid" id="file_receiver_pipeid">
+								
+								<label for="file_encrypt_password">
+									<span>Password (optional)</span>
+									<input type="text" name="passwd" id="file_encrypt_password" title="Optional password" placeholder="Extra protection by password" data-nonempty="true" data-regexp="password" data-spacesafe="true" data-maxlength="64">
+								</label><!-- -otpLabel -->
+							
+								<label for="file_to_encrypt">
+									<span>Select files to encrypt</span>
+									<input type="file" name="file" id="file_to_encrypt">
+								</label><!-- -otpLabel -->
+								
+								<div id="file_to_encrypt_drop" class="likeLabel">or drop file here</div>
+								
+								<div id="file_progress">
+									<div id="file_bar"></div>
+									<div id="file_percent">0%</div>
+								</div><!-- #file_progress -->
+
+								<div id="file_message"></div>
+														
+								<div class="buttonWrapper">
+									<a href="#" class="button submit makeAction" rel="file_encrypt_send"><span id="file_encrypt_send_label">Encrypt the file <i class="icon icon-ok"></i></span></a>
+								</div><!-- .buttonWrapper -->
+							
+							</fieldset>
+						
+						</form>
+						
+					</div><!-- .activity -->
+					
+					<div id="file_decrypt" class="activity" data-encedo-only="true">
+					
+						<h2><span><i class="icon icon-attach-2"></i> <i class="icon icon-left-open"></i> File decrypt</span></h2>
+						
+						<p>This application will let you process a file. To encrypt file choose "Encrypt". To decrypt... you know what to do :)</p>
+						
+						<form method="POST" action="//encedokey.com/stream/decrypt" id="file_decrypt_form" enctype="multipart/form-data">
+						
+							<fieldset>
+							
+								<label for="file_decrypt_password">
+									<span>Password (optional)</span>
+									<input type="text" name="passwd" id="file_decrypt_password" title="Optional password" placeholder="Private optional password" data-nonempty="true" data-regexp="password" data-spacesafe="true" data-maxlength="64">
+								</label><!-- -otpLabel -->
+							
+								<input type="hidden" value="" name="pubkey">
+								<input type="hidden" value="" name="keytype">
+								<input type="hidden" value="" name="pipeid" id="file_decrypt_pipeid">
+								
+								<label for="file_to_decrypt">
+									<span>Select files to encrypt</span>
+									<input type="file" name="file" id="file_to_decrypt">
+								</label><!-- -otpLabel -->
+								
+								<div id="file_to_decrypt_drop" class="likeLabel">or drop file here</div>
+								
+								<div id="file_deprogress">
+									<div id="file_debar"></div>
+									<div id="file_depercent">0%</div>
+								</div><!-- #file_progress -->
+
+								<div id="file_demessage"></div>
+
+								
+														
+								<div class="buttonWrapper">
+									<a href="#" class="button submit makeAction" rel="file_decrypt_send"><span id="file_decrypt_send_label">Decrypt the file <i class="icon icon-ok"></i></span></a>
+								</div><!-- .buttonWrapper -->
+							
+							</fieldset>
+						
+						</form>
+						
+					</div><!-- .activity -->
+					
+					<div id="message" class="activity" data-encedo-only="true">
+					
+						<h2><span><i class="icon icon-diamond"></i> Message encrypt/decrypt</span></h2>
+						<p>EncedoKey can be used as simple messaging system. Choose first step - encrypt or decrypt of the message?</p>
+						
+						<div class="buttonWrapper">
+							<a href="#" class="button generate openActivity" rel="message_encrypt"><span>Encrypt <i class="icon icon-right-open"></i></span></a>
+							<span class="el">or</span>
+							<a href="#" class="button generate openActivity" rel="message_decrypt"><span>Decrypt <i class="icon icon-right-open"></i></span></a>
+							
+						</div><!-- .buttonWrapper -->
+						
+					</div><!-- .activity -->
+					
+					<div id="message_encrypt" class="activity" data-encedo-only="true">
+					
+						<h2><span><i class="icon icon-diamond"></i> <i class="icon icon-right-open"></i> Message encrypt</span></h2>
+						
+						<p>Nice, lets send some confidential informations. Type the message you wand to encrypt and select the recipient of the message. Then hit "Encrypt' to get a ciphered version of the message. To send it directly over email select 'Encrypt and Send'.</p>
+						
+						<form action="#" id="message_crypt_form">
+						
+							<fieldset>
+						
+								<label for="message_crypt_text"><textarea rows="3" cols="10" id="message_crypt_text" name="text_plain" title="Message to encrypt" data-nonempty="true" placeholder="Message to encrypt" data-maxlength="512"></textarea></label>
+								<p>Approximation of remaining characters: <input type="text" name="encrypt_remaining" id="encrypt_remaining" value="512" class="inline-input-type"></p>
+								
+								
+								<label for="message_receiver">
+									<span>Receiver address</span>
+									<div class="wrapper">
+										<select name="pubkey" id="message_receiver" class="collection" rel="keysmanagerget">
+											<option class="prototype index" value="{{pubkey}}" rel="{{email}}" data-type="{{type}}">{{descr}} ({{pubkeyshort}}) {{#prvkey}}+ prvkey{{/prvkey}}</option>
+										</select>
+									</div><!-- .selectWrapper -->
+								</label><!-- -otpLabel -->
+								
+								<div class="buttonWrapper">
+									<a href="#" class="button generate submit makeAction" rel="message_crypt_send"><span>Encrypt <i class="icon icon-ok"></i></span></a>
+									<span class="el">or</span>
+									<a href="#" class="button generate makeAction" rel="message_crypt_send_email"><span>Encrypt and Send <i class="icon icon-mail"></i></span></a>
+								</div><!-- .buttonWrapper -->
+							
+							</fieldset>
+							
+							<fieldset>
+								<textarea rows="7" cols="10" id="message_aftercrypt_text" name="text" class="selectOnClick" placeholder="Crypted version"></textarea>
+							</fieldset>
+						
+						</form>
+						
+					</div><!-- .activity -->
+					
+					<div id="message_decrypt" class="activity" data-encedo-only="true">
+					
+						<h2><span><i class="icon icon-diamond"></i> <i class="icon icon-left-open"></i> Message decrypt</span></h2>
+						
+						<p>It can`t be simpler! Type (copy-paste) encrypted message, then 'Decrypt'. If your EncedoKey has a required private key you will see the original version of the massage.</p>
+						
+						<form action="#" id="message_decrypt_form">
+						
+							<fieldset>
+							
+								<label for="message_decrypt_text"><textarea rows="7" cols="10" id="message_decrypt_text" name="text" class="selectOnClick" title="Message to decrypt" data-nonempty="true" placeholder="Message to decrypt" maxlength="2000"></textarea></label>
+								
+								<div class="buttonWrapper">
+									<a href="#" class="button noncta backButton openActivity" rel="message"><span><i class="icon icon-left-open"></i> back</span></a>
+									<span class="el">or</span>
+									<a href="#" class="button generate submit makeAction" rel="message_decrypt_send"><span>Decrypt <i class="icon icon-ok"></i></span></a>
+								</div><!-- .buttonWrapper -->
+						
+							</fieldset>
+							
+							<fieldset>
+								<textarea rows="3" cols="10" id="message_afterdecrypt_text" name="text_after" class="selectOnClick" placeholder="Original message will be here!"></textarea>
+							</fieldset>
+							
+						</form><!-- #message_decrypt_form -->
+						
+					</div><!-- .activity -->
+					
+					<div id="lockunlock" class="activity" data-encedo-only="true">
+					
+						<h2><span><i class="icon icon-lock"></i> Lock/unlock device and storage</span></h2>
+						<p>Some operation on EncedoKey require authentication. Device have to be unlock to allow some operation on keys like: generation, import, decryption or deletition.</p>
+						
+						<form action="#" id="lockunlock_form_device">
+							<fieldset>
+								<div class="pseudoLabel">
+									<h3><span>Device <strong id="lockunlock_form_device_label"></strong></span></h3>
+									<div class="wrapper split2 clearfix">
+										<label for="lockDevicePassword"><input type="password" name="passwd" title="Device password" id="lockDevicePassword" placeholder="Device password here to unlock device" data-nonempty="true" data-regexp="password"  data-maxlength="64"></label><!-- -otpLabel -->
+										<div class="buttonWrapper">
+											<a href="#" class="button noncta makeAction" id="lockunlock_form_device_unlock" rel="lockunlock_form_device_unlock"><span>Unlock <i class="icon icon-lock-open"></i></span></a>
+											<span class="el">or</span>
+											<a href="#" class="button noncta makeAction" id="lockunlock_form_device_lock" rel="lockunlock_form_device_lock"><span>Lock <i class="icon icon-lock-1"></i></span></a>
+										</div><!-- .buttonWrapper -->
+									</div><!-- .wrapper -->
+								</div><!-- .pseudoLabel -->
+							</fieldset>
+						</form><!-- #lockunlock_form_device -->
+						
+						<form action="#" id="lockunlock_form_appstorage">
+							<fieldset>		
+								<div class="pseudoLabel noBorderBottom">
+									<h3><span>Application storage <strong id="lockunlock_form_appstorage_label"></strong></span></h3>
+									<div class="wrapper split2 clearfix">
+										<label for="lockAppStoragePassword"><input type="password" name="passwd" title="Application storage password" id="lockAppStoragePassword" placeholder="Password here to unlock storage" data-nonempty="true" data-regexp="password"  data-maxlength="64"></label><!-- -otpLabel -->
+										<div class="buttonWrapper">
+											<a href="#" class="button noncta makeAction" id="lockunlock_form_appstorage_unlock" rel="lockunlock_form_appstorage_unlock"><span>Unlock <i class="icon icon-lock-open"></i></span></a>
+											<span class="el">or</span>
+											<a href="#" class="button noncta makeAction" id="lockunlock_form_appstorage_lock" rel="lockunlock_form_appstorage_lock"><span>Lock <i class="icon icon-lock-1"></i></span></a>
+										</div><!-- .buttonWrapper -->
+									</div><!-- .wrapper -->
+								</div><!-- .pseudoLabel -->		
+								<label for="unlockAppStorageWrite" class="withCheckbox">
+									<input type="checkbox" name="ro" id="unlockAppStorageWrite" value="false">
+									<span>Enable write permissions</span>
+								</label><!-- -otpLabel -->	
+							</fieldset>
+						</form><!-- #lockunlock_form_storage -->
+						
+						<form action="#" id="lockunlock_form_storage">
+							<fieldset>		
+								<div class="pseudoLabel noBorderBottom">
+									<h3><span>Storage <strong id="lockunlock_form_storage_label"></strong></span></h3>
+									<div class="wrapper split2 clearfix">
+										<label for="lockStoragePassword"><input type="password" name="passwd" title="Storage password" id="lockStoragePassword" placeholder="Password here to unlock storage" data-regexp="password" data-nonempty="true" data-maxlength="64"></label><!-- -otpLabel -->
+										<div class="buttonWrapper">
+											<a href="#" class="button noncta makeAction" id="lockunlock_form_storage_unlock" rel="lockunlock_form_storage_unlock"><span>Unlock <i class="icon icon-lock-open"></i></span></a>
+											<span class="el">or</span>
+											<a href="#" class="button noncta makeAction" id="lockunlock_form_storage_lock" rel="lockunlock_form_storage_lock"><span>Lock <i class="icon icon-lock-1"></i></span></a>
+										</div><!-- .buttonWrapper -->
+									</div><!-- .wrapper -->
+								</div><!-- .pseudoLabel -->		
+								<label for="unlockStorageWrite" class="withCheckbox">
+									<input type="checkbox" name="ro" id="unlockStorageWrite" value="false">
+									<span>Enable write permissions</span>
+								</label><!-- -otpLabel -->	
+							</fieldset>
+						</form><!-- #lockunlock_form_storage -->
+						
+					</div><!-- #lockunlock -->
+					
+					<div id="description" class="activity">
+					
+						<h2><span>Description</span></h2>
+						
+					</div><!-- .activity -->
+					
+					<div id="credits" class="activity">
+					
+						<h2><span><i class="icon icon-users"></i> Credits</span></h2>
+						<p>Donec pellentesque justo vitae laoreet gravida. In pharetra, nisl at laoreet sagittis, orci nisl posuere ante, sed molestie magna augue vel tellus. Nulla facilisi. Nullam scelerisque, arcu a feugiat tempus, leo purus tincidunt nisl, id viverra nunc orci laoreet velit. Mauris luctus, arcu id adipiscing adipiscing, augue eros condimentum leo, eget sagittis risus urna id nunc. Nunc nec euismod diam.</p>
+						
+						<div class="buttonWrapper">
+							<a href="#" class="button noncta backButton openActivity" rel="start"><span><i class="icon icon-left-open"></i> back</span></a>
+							<span class="el">or</span>
+							<a href="#" class="button addButton openActivity" rel="takeatour"><span>Take a tour <i class="icon icon-globe"></i></span></a>
+						</div><!-- .buttonWrapper -->
+						
+					</div><!-- .activity -->
+					
+					<div id="setup" class="activity">
+					
+						<h2><span><i class="icon icon-cog-outline"></i> Encedo settings</span></h2>
+						
+						<h3><a href="#" rel="lockunlock" class="openActivity"><span class="icon icon-lock"></span> Lock device</a></h3>
+						<br>
+						<h3>Choose the theme color you like most.</h3>
+												
+						<ul class="changerClass buttonWrapper clearfix">
+							<li class="button" rel="1"><span>Classic/basic <i class="icon icon-ok"></i></span></li>
+							<li class="button" rel="4"><span>High contrast <i class="icon icon-ok"></i></span></li>
+							<li class="button" rel="2"><span>Dark/black <i class="icon icon-ok"></i></span></li>
+							<li class="button" rel="3"><span>Console <i class="icon icon-ok"></i></span></li>
+						</ul>
+						
+						<h3><span><i class="icon icon-truck"></i> EncedoKey alternative location</span></h3>
+						
+						<p>You can manage EncedoKey remotly. Type it`s location (IP address) below and save the changes.</p>
+						
+						<form action="#" id="setup_form" class="validated">
+						
+							<fieldset>
+								<label for="encedoLocation">
+									<span>EncedoKey location</span>
+									<input type="text" name="location" id="encedoLocation" placeholder="localhost (default)" data-regexp="url"  data-maxlength="512">
+								</label><!-- -otpLabel -->
+								
+								<div class="buttonWrapper">
+									<a href="#" class="button addButton submit makeAction" rel="setup_change"><span>Save changes <i class="icon icon-ok"></i></span></a>
+								</div><!-- .buttonWrapper -->
+							</fieldset>
+						
+						</form><!-- #setup_form -->
+						
+						<h3><span><i class="icon icon-user"></i> Personalization</span></h3>
+						<p>The two options below let you update personal informations or format the device. Formating is destructive and will wipe out all the secrets upfront!</p>
+						
+						<div class="buttonWrapper">
+							<a href="#" class="button openActivity" rel="updatedevice"><span>Update data <i class="icon icon-right-open"></i></span></a>
+							<span class="el">or</span>
+							<a href="#" class="button openActivity" rel="formatdevice"><span>Format device <i class="icon icon-right-open"></i></span></a>
+						</div><!-- .buttonWrapper -->
+
+						
+					</div><!-- .activity -->
+					
+					<div id="formatdevice" class="activity" data-encedo-only="true">
+					
+						<h2><span><i class="icon icon-user"></i> Format user options</span></h2>
+						<p>The two options below let you update personal informations or format the device. Formating is destructive and will wipe out all the secrets upfront!</p>
+						
+						<form action="#" id="formatdevice_form">
+						
+							<fieldset>
+								
+								<label for="deviceOwnerName">
+									<span>Owner name</span>
+									<input type="text" name="name" id="deviceOwnerName" title="Owner name" placeholder="your name or nickname or empty" data-nonempty="true" data-regexp="simpletext" data-spacesafe="true" data-maxlength="64">
+								</label><!-- -otpLabel -->
+								
+								<label for="deviceOwnerContact">
+									<span>Contact email</span>
+									<input type="text" name="contact" id="deviceOwnerContact" title="Owner email address" placeholder="your email address" data-nonempty="true" data-regexp="email" data-spacesafe="true" data-maxlength="64">
+								</label><!-- -otpLabel -->
+								
+								<div class="pseudoLabel noBorderBottom">
+									<span>Storage password</span>
+									<div class="wrapper split">
+										<label for="deviceStoragePassword"><input title="Storage password" type="password" name="storage" id="deviceStoragePassword" placeholder="password here"  data-nonempty="true" data-regexp="password" data-maxlength="64"></label>
+										<label for="deviceStoragePassword2"><input title="Storage password confirmation" type="password" name="storage2" id="deviceStoragePassword2" placeholder="confirm here" data-nonempty="true" data-match="storage"></label>
+									</div><!-- .wrapper -->
+								</div><!-- .pseudoLabel -->
+								
+								<div id="deviceStoragePasswordTest" class="pronos" rel="deviceStoragePassword"></div><!-- .howStrong -->
+								
+								<div class="pseudoLabel noBorderBottom">
+									<span>Device password</span>
+									<div class="wrapper split">
+										<label for="deviceDevicePassword"><input title="Device password" type="password" name="device" id="deviceDevicePassword" placeholder="device password here" data-nonempty="true" data-regexp="password" data-maxlength="64"></label>
+										<label for="deviceDevicePassword2"><input title="Device password confirmation" type="password" name="device2" id="deviceDevicePassword2" placeholder="confirm here" data-nonempty="true" data-match="device"></label>
+									</div><!-- .wrapper -->
+								</div><!-- .pseudoLabel -->
+								
+								<div id="deviceDevicePasswordTest" class="pronos" rel="deviceDevicePassword"></div><!-- .howStrong -->
+								
+								<div class="pseudoLabel noBorderBottom">
+									<span>Hidden volume password</span>
+									<div class="wrapper split">
+										<label for="deviceHiddenPassword"><input title="Hidden volume password" type="password" name="hidden" id="deviceHiddenPassword" placeholder="hidden password here" data-nonempty="true" data-regexp="password" data-maxlength="64"></label>
+										<label for="deviceHiddenPassword2"><input title="Hidden volume password confirmation" type="password" name="hidden2" id="deviceHiddenPassword2" placeholder="confirm here" data-nonempty="true" data-match="hidden" ></label>
+									</div><!-- .wrapper -->
+								</div><!-- .pseudoLabel -->
+								
+								<div id="deviceHiddenPasswordTest" class="pronos" rel="deviceHiddenPassword"></div><!-- .howStrong -->
+								
+								<div class="pseudoLabel">
+									<span>Device PIN</span>
+									<div class="wrapper split">
+										<label for="devicePIN"><input title="Device PIN" type="password" name="pin" id="devicePIN" placeholder="pin here" data-nonempty="true" data-regexp="simple" data-spacesafe="true" data-maxlength="64"></label>
+										<label for="devicePIN2"><input title="Device PIN confirmation" type="password" name="pin2" id="devicePIN2" placeholder="confirm here" data-nonempty="true" data-match="pin"></label>
+									</div><!-- .wrapper -->
+								</div><!-- .pseudoLabel -->
+								
+							</fieldset>
+							
+							<fieldset>
+							
+								<label for="deviceAllowBackup" class="withCheckbox">
+									<input type="checkbox" name="allowbackup" id="deviceAllowBackup" value="1" checked="checked">
+									<span>Allow backup of the keystore</span>
+								</label><!-- -deviceAllowBackup -->
+								
+								<label for="keyAllowPlain" class="withCheckbox">
+									<input type="checkbox" name="allowplain" id="keyAllowPlain" value="1" checked="checked">
+									<span>Allow plain text passphrase input (challenge otherwise)</span>
+								</label><!-- -otpLabel -->
+								
+								<label for="keyRandomUSB" class="withCheckbox">
+									<input type="checkbox" name="randomusb" id="keyRandomUSB" value="1">
+									<span>Random USB serial number every plug-in</span>
+								</label><!-- -keyPassToWipe -->
+							
+							</fieldset>		
+							
+							<fieldset>
+							
+								<p>Aliquam sollicitudin accumsan volutpat. Nulla at justo ac nunc egestas eleifend. Nunc faucibus, justo sit amet adipiscing faucibus, nisi velit ultricies mi, fringilla porttitor enim tortor sed urna.</p>
+								
+								<label for="keyDeviceMaxPass" class="withSimple">
+									<input type="text" name="devicemaxpass" id="keyDeviceMaxPass" value="3" title="Max number of device passphares input errors" data-nonempty="true" data-regexp="int" data-maxlength="64">
+									<span>Max number of device passphares input errors</span>
+								</label><!-- - -->
+								
+								<label for="keyStorageMaxPass" class="withSimple">
+									<input type="text" name="storagemaxpass" id="keyStorageMaxPass" value="3" title="Max number of storage passphares input errors" data-nonempty="true" data-regexp="int" data-maxlength="64">
+									<span>Max number of storage passphares input errors</span>
+								</label><!-- - -->
+								
+								<label for="keyHiddenMaxPass" class="withSimple">
+									<input type="text" name="hiddenmaxpass" id="keyHiddenMaxPass" value="3" title="Max number of hidden-volume passphares input errors" data-nonempty="true" data-regexp="int" data-maxlength="64">
+									<span>Max number of hidden-volume passphares input errors</span>
+								</label><!-- - -->
+								
+								<label for="keyAuthMaxPass" class="withSimple">
+									<input type="text" name="authmaxpass" id="keyAuthMaxPass" value="3" title="Max number of authenticator passphares input errors" data-nonempty="true" data-regexp="int" data-maxlength="64">
+									<span>Max number of authenticator passphares input errors</span>
+								</label><!-- - -->
+								
+								<label for="keyAppDriveSize" class="withSimpleBigger">
+									<input type="text" name="appdrivesize" id="keyAppDriveSize" value="128" title="Application drive size" data-nonempty="true" data-regexp="int" data-maxlength="64">
+									<span>Application drive size [MB]</span>
+								</label><!-- - -->
+								
+							</fieldset>
+							
+							<fieldset>
+								
+								<div class="buttonWrapper">
+									<a href="#" class="button noncta openActivity" rel="setup"><span><i class="icon icon-left-open"></i> back</span></a>
+									<span class="el">or</span>
+									<a href="#" class="button makeAction" rel="formatdevice_new"><span>Click to format device <i class="icon icon-ok"></i></span></a>
+								</div><!-- .buttonWrapper -->
+							
+							</fieldset>
+						
+						</form>
+					</div><!-- .activity -->
+					
+					<div id="formatdevice_after" class="activity" data-encedo-only="true">
+					
+						<h2><span><i class="icon icon-attention"></i> Important information!</span></h2>
+						<h3>Device has been formated.</h3>
+						<p>Mauris ante sem, condimentum in tortor et, tincidunt dapibus lectus. Nunc egestas, nisl ut tincidunt suscipit, vel facilisis sapien augue id eros. Duis eu eros nec libero elementum fringilla.</p>
+						
+						<h3>Master Erase Code:</h3>
+						<p><strong id="mec">forgotten forever</strong></p>
+						<h3>UniqueID:</h3>
+						<p><strong id="uniqueid">none</strong></p>
+						<h3>Version:</h3>
+						<p><strong id="encversion">none</strong></p>
+					
+					</div><!-- .activity -->
+					
+					<div id="updatedevice" class="activity" data-encedo-only="true">
+					
+						<h2><span><i class="icon icon-user"></i> Update user data</span></h2>
+						<p>Mauris ante sem, condimentum in tortor et, tincidunt dapibus lectus. Nunc egestas, nisl ut tincidunt suscipit, vel facilisis sapien augue id eros. Duis eu eros nec libero elementum fringilla.</p>
+						
+						<form action="#" id="updatedevice_form">
+						
+							<fieldset>
+								
+								<label for="deviceUpdateOwnerName">
+									<span>Owner name</span>
+									<input type="text" name="name" id="deviceUpdateOwnerName" placeholder="your name or nickname or empty" data-regexp="simpletext" data-spacesafe="true" data-maxlength="64">
+								</label><!-- -otpLabel -->
+								
+								<label for="deviceUpdateOwnerContact">
+									<span>Contact email</span>
+									<input type="text" name="contact" id="deviceUpdateOwnerContact" placeholder="your email address" data-regexp="email" data-spacesafe="true" data-maxlength="64">
+								</label><!-- -otpLabel -->
+								
+								<div class="pseudoLabel noBorderBottom">
+									<span>Storage password</span>
+									<div class="wrapper split">
+										<label for="deviceUpdateStoragePassword"><input title="Storage password" type="password" name="storage" id="deviceUpdateStoragePassword" placeholder="password here" data-regexp="password" data-maxlength="64"></label>
+										<label for="deviceUpdateStoragePassword2"><input title="Storage password confirmation" type="password" name="storage2" id="deviceUpdateStoragePassword2" placeholder="confirm here" data-match="storage"></label>
+									</div><!-- .wrapper -->
+								</div><!-- .pseudoLabel -->
+								
+								<div id="deviceUpdateStoragePasswordTest" class="pronos" rel="deviceUpdateStoragePassword"></div><!-- .howStrong -->
+								
+								<div class="pseudoLabel noBorderBottom">
+									<span>Device password</span>
+									<div class="wrapper split">
+										<label for="deviceUpdateDevicePassword"><input title="Device password" type="password" name="device" id="deviceUpdateDevicePassword" placeholder="device password here" data-regexp="password" data-maxlength="64"></label>
+										<label for="deviceUpdateDevicePassword2"><input title="Device password confirmation" type="password" name="device2" id="deviceUpdateDevicePassword2" placeholder="confirm here" data-match="device"></label>
+									</div><!-- .wrapper -->
+								</div><!-- .pseudoLabel -->
+								
+								<div id="deviceUpdateDevicePasswordTest" class="pronos" rel="deviceUpdateDevicePassword"></div><!-- .howStrong -->
+								
+								<div class="pseudoLabel noBorderBottom">
+									<span>Hidden volume password</span>
+									<div class="wrapper split">
+										<label for="deviceUpdateHiddenPassword"><input title="Hidden volume password" type="password" name="hidden" id="deviceUpdateHiddenPassword" placeholder="hidden password here" data-regexp="password" data-maxlength="64"></label>
+										<label for="deviceUpdateHiddenPassword2"><input title="Hidden volume password confirmation" type="password" name="hidden2" id="deviceUpdateHiddenPassword2" placeholder="confirm here" data-match="hidden"></label>
+									</div><!-- .wrapper -->
+								</div><!-- .pseudoLabel -->
+								
+								<div id="deviceUpdateHiddenPasswordTest" class="pronos" rel="deviceUpdateHiddenPassword"></div><!-- .howStrong -->
+								
+								<div class="pseudoLabel">
+									<span>Device PIN</span>
+									<div class="wrapper split">
+										<label for="deviceUpdatePIN"><input title="Device PIN" type="password" name="pin" id="deviceUpdatePIN" placeholder="pin here" data-regexp="simple" data-spacesafe="true" data-maxlength="64"></label>
+										<label for="deviceUpdatePIN2"><input title="Device PIN confirmation" type="password" name="pin2" id="deviceUpdatePIN2" placeholder="confirm here" data-match="pin"></label>
+									</div><!-- .wrapper -->
+								</div><!-- .pseudoLabel -->
+								
+								<div class="buttonWrapper">
+									<a href="#" class="button noncta openActivity" rel="setup"><span><i class="icon icon-left-open"></i> back</span></a>
+									<span class="el">or</span>
+									<a href="#" class="button makeAction" rel="updatedevice_new"><span>Apply <i class="icon icon-ok"></i></span></a>
+								</div><!-- .buttonWrapper -->
+							
+							</fieldset>
+						
+						</form>
+					</div><!-- .activity -->
+					
+					<div id="loadingEncedo" class="activity">
+					
+						<h2><span><i class="icon icon-warning"></i> EncedoKey is not connected.</span></h2>
+						<p>Plug EncedoKey into USB and try to connect.</p>
+						
+						<div class="buttonWrapper">
+							<a href="#" class="button makeAction" rel="encedo_connect"><span>Try to connect <i class="icon icon-arrows-ccw"></i></span></a>
+						</div><!-- .buttonWrapper -->
+						
+					</div><!-- #loadingEncedo -->
+					
+					<div id="refreshingEncedo" class="activity">
+					
+						<h2><span><i class="icon icon-warning"></i> EncedoKey is now refreshing.</span></h2>
+						<p>Please wait a moment.</p>
+						
+						<div class="buttonWrapper">
+							<a href="#" class="button makeAction" rel="encedo_connect"><span>Try to connect <i class="icon icon-arrows-ccw"></i></span></a>
+						</div><!-- .buttonWrapper -->
+						
+					</div><!-- #loadingEncedo -->
+					
+					<div id="error_404" class="activity">
+					
+						<h2><span><i class="icon icon-warning"></i> Page not found :(</span></h2>
+						<p>Link may be broken or uncompleted</p>
+						
+						<div class="buttonWrapper">
+							<a href="#" class="button openActivity" rel="start"><span>Go to start page <i class="icon icon-right-open-big"></i></span></a>
+						</div><!-- .buttonWrapper -->
+						
+					</div><!-- #loadingEncedo -->
+					
+				</div><!-- #APPactivities -->
+				
+			</div><!-- #APPwrapper -->
+			
+			<div id="APPfooter" class="clearfix">
+				<div class="owner" title="Encedo Owner"></div><!-- .owner-->
+				<div class="datenow" title="Super fancy timer/clock, such fun!"></div><!-- .datenow-->
+				<div class="version" title="EncedoKey Application version"></div><!-- .version-->
+				<div class="status" title="EncedoKey Connection status">connecting...</div><!-- .status-->
+			</div><!-- #APPfooter -->
+				
+		</div><!-- #APP -->
+	
+		<script type="text/javascript" src="Assets/jqu.js"></script>
+		
+		<script type="text/javascript">
+		;(function( $, window, undefined ){
+
+			var bodyElement = $(document.body);
+			CDD.css(bodyElement);
+			bodyElement.styleWatcher('small', { 'width': [0,600] });
+			bodyElement.styleWatcher('mid', { 'width': [601,900] });
+			bodyElement.styleWatcher('normal', { 'width': [900] });
+
+			var encedo = $('#APP').encedoApp();
+
+			(function(enc){
+			
+				enc.api('env/', function(status, res) {
+					bodyElement.removeClass('env1 env2 env3 env4');
+					bodyElement.addClass('env' + res.val);
+				});
+			
+				$('.changerClass').on('click', 'li', function(ev){
+					enc.api('env/' + $(this).attr('rel'), function(status, res) {
+						enc.api('env/', function(status, res) {
+							bodyElement.removeClass('env1 env2 env3 env4');
+							bodyElement.addClass('env' + res.val);
+						});
+					}, 'POST');
+				});
+				
+			})( encedo );
+			
+			// creating new action connected to activity
+			(function(enc){
+			
+				// some local code used in action registered below
+				var randomSTRCont = $('#randomstring_generate_container');								
+				var col = $('div.collection[rel=randomstring_password]').collection();
+				
+				// THIS IS PROPER ACTION 
+				enc.register('randomstring_generate', function() {
+					enc.api('api/random/seed/1024', function(status, res) {
+						randomSTRCont.html(res.seed);
+					});
+				});
+				
+				// THIS IS ANOTHER PROPER ACTION 
+				enc.register('randomstring_password', function() {
+					enc.api('api/random/passwd/5', function(status, res) {
+						if(status == 'success') {
+						
+							col.empty();
+							$.each(res.password, function(it, el){
+								col.create({'password': el});
+							});
+
+						} else {
+							alert('problem');
+						}
+					});
+				});
+			
+			})( encedo );
+			
+			
+			(function(enc){
+			
+				var coll = $('#otpcodesCol');
+				var form = $('form#otpcodes_new_form');		
+				var header = $('h3#otpcodes_timestamp');	
+				var pg = $('div#otpcodes_timer').progressBar({ 'description': 'remaining time' });	
+				var intervalHandler = false;
+				var intervalHandler2 = false;
+				var otp_secret = $('#otp_secret');
+				
+				var col = coll.collection({
+					'remove': function(element) {
+						if(confirm('Are you sure?')) {
+							enc.api('api/oath/' + element.attr('rel'), function(status, res) { 
+								get_otp();
+								notify('OTP code been successfully removed from the list.', 'key');
+							}, 'DELETE'); 
+						}
+					}
+				});
+				
+				var createDateTimeLimit = function(time) {
+					datevalues = [time.getFullYear(), time.getMonth()+1, time.getDate(), time.getHours(), time.getMinutes(), time.getSeconds()];
+					var remain = Math.floor(datevalues[5]/30)*30;
+					header.text('Codes are valid for ' + datevalues[0] + '/' + (datevalues[1] > 9 ? datevalues[1] : '0'+datevalues[1]) + '/' + (datevalues[2] > 9 ? datevalues[2] : '0'+datevalues[2]) + ' ' + datevalues[3] + ':' + (datevalues[4] > 9 ? datevalues[4] : '0'+datevalues[4]) + ':' + (remain > 9 ? remain : '0'+remain));
+				}
+				
+				var get_otp = function(id){
+					
+					enc.api('api/oath', function(status, res) {
+						if(status == 'success' && res && res.items) {
+							col.empty();
+							col.add(res.items.reverse());
+							var date = new Date(res.timestamp * 1000);
+							createDateTimeLimit(date);
+						} 
+					});
+				}
+				
+				coll.on('click', '.getOTPCode', function(ev){
+					ev.preventDefault();
+					var $this = $(this);
+					if(!$this.hasClass('active')) {
+						var code = $this.attr('rel'), text = $this.text();
+						$this.fadeOut(390);
+						$('#' + code).delay(400).fadeIn(1000).delay(7000).fadeOut(1300);
+						$this.addClass('active');
+						setTimeout(function() {
+							$this.removeClass('active').fadeIn(2000);
+						}, 9800);
+					} 
+				});
+				
+				enc.register('otpcodes__', function() {
+					clearTimeout(intervalHandler);
+					clearInterval(intervalHandler2);
+				});
+				
+				enc.register('otpcodes', function() {
+					var t = new Date();
+					var moment = (t.getSeconds()%30);
+					createDateTimeLimit(t);
+					pg.animate(moment*3.3, false, (30-moment));
+					intervalHandler = setTimeout(function(){
+						intervalHandler2 = setInterval(function(){
+							pg.animate(0, false, 30);
+							var t = new Date();
+							var moment = (t.getSeconds()%30);
+							createDateTimeLimit(t);
+							get_otp();
+						}, 30000);
+						pg.animate(0, false, 30);
+					}, (31-moment)*1000);
+					get_otp();
+					form[0].reset();
+				});
+				
+				enc.register('otpcodes_new', function() {
+					form[0].reset();
+				});
+				
+				enc.register('otpcodes_after', function() {
+					
+				});
+				
+				enc.register('otpcodes_create', function() {
+					
+					var pack = form.serializeObject();
+					
+					if(pack) {
+				
+						if (pack.secret) { 
+							enc.api('api/oath', function(status, res) { 
+								enc.page('otpcodes'); 
+								notify('New OTP code has been successfully created with <strong>OTP secret</strong>', 'key');
+							}, 'POST', pack); 
+						} else { 
+							enc.api('api/oath', function(status, res) { 
+								otp_secret.text(res.secret);
+								enc.page('otpcodes_after'); 
+								notify('New OTP code has been successfully created.', 'key');
+							}, 'POST', pack); 
+						} 
+					
+					}
+					
+				});
+			
+			})( encedo );	
+			
+			(function(enc){
+			
+				var form = $('form#keysmanager_new_form');	
+				var coll = $('div.collection[rel=keysmanager]');
+				var label = form.find('#keyLabel');
+				var descr = form.find('#keyDescription');
+				var type = form.find('#keyType');
+				var pubKey = form.find('#keyPubKey');
+				var importCheck = form.find('#keyImport');
+				var hiddened = form.find('#keymanager_form_import');
+				   
+				var col = coll.collection({
+					'remove': function(element) {
+						if(confirm('Are you sure?')) {
+							enc.api('api/manage/' + element.attr('rel'), function(status, res) { 
+								col.empty();
+								enc.refresh();
+								notify('Key been successfully removed from the list.', 'key');
+							}, 'DELETE'); 
+						}
+					}
+				});
+				
+				coll.on('click', '.sendViaEmail', function(ev){
+					ev.preventDefault();
+					var email = prompt("Please enter email address", "");
+					if (email != null) {
+						$.ajax({
+						  type: 'POST',
+						  url: 'https://encedo.com/EncedoKey/support/send_pubkey.php',
+						  dataType: 'json',
+						  contentType: 'application/json; charset=utf-8',
+						  data: JSON.stringify({ 'to': {'email':email, 'descr': ""}, 'from': {'email': email, 'descr': "test"}, 'key': { 'descr': $(this).attr('data-title'), 'contact': $(this).attr('data-descr'), 'pubkey': $(this).attr('rel'), 'type': $(this).attr('data-type') } }),
+						  xhrFields: { withCredentials: false },
+						  headers: { },
+						  success: function(res) { 
+							console.log(res); 
+							notify('Key has been successfully sent to '+email+'.', 'key');
+						  }, error: function(res) { 
+							console.log(res); 
+							notify('Problem while sending message with key to '+email+'.', 'attention');
+						  }
+						});
+					}
+				}).on('click', '.sendMessage', function(ev){
+					ev.preventDefault();
+					var message = prompt("Please enter message", "");
+					var email = $(this).attr('data-descr');
+					if (message != null) {
+						message = window.btoa(encodeURIComponent(message));		
+						enc.api('api/encrypt', function(status, res) { 
+							if(status == 'success' && res) {
+							
+								var fin = window.btoa(JSON.stringify(res));
+								
+								$.ajax({
+								  type: 'POST',
+								  url: 'https://encedo.com/EncedoKey/support/send_message.php',
+								  dataType: 'json',
+								  contentType: 'application/json; charset=utf-8',
+								  data: JSON.stringify({ 'msg': { 'ciphertext': fin }, 'to': { 'descr': email, 'email': email } }),
+								  xhrFields: { withCredentials: false },
+								  headers: { },
+								  success: function(res) { console.log(res); 
+									notify('Encrypted Message has been sent successfully.', 'mail');
+								  },
+								  error: function(res) { console.log(res); 
+									notify('Error occured while sending encrypted message.', 'warning');
+								  }
+								});
+								
+							} else {
+								console.log('Error occurred.');
+							}
+						}, 'POST', { 'arg': '-JBbp '+$(this).attr('rel')+' -d '+message+''}); 
+					}
+				});
+				
+				enc.register('keysmanager', function() {
+					
+					enc.api('api/manage', function(status, res) {
+						if(status == 'success' && res && res.items) {
+							$.each(res.items, function(it, el){
+								if(res.items[it].email == "false") res.items[it].email = false;
+							});
+							col.empty();
+							col.add(res.items.reverse());
+							form[0].reset();
+						}
+					});
+					
+					form[0].reset();
+					hiddened.addClass('index');
+				});
+				
+				enc.register('keysmanager_new', function() {
+					form[0].reset();
+					hiddened.addClass('index');
+					console.log(enc.args);
+					if(enc.args && enc.args.key_descr && enc.args.key_contact && enc.args.key_pubkey) {
+						if(!enc.args.key_type) {
+							enc.args.key_type = 'curve25519';
+						}
+						label.val(enc.args.key_descr);
+						descr.val(enc.args.key_contact);
+						pubKey.val(enc.args.key_pubkey);
+						type.find('option[value="'+enc.args.key_type+'"]').attr("selected", true);
+						importCheck.attr("checked", true);
+						hiddened.removeClass('index');
+						
+					}
+				});
+				
+				enc.register('keysmanager_create', function() {
+					
+					var pack = form.serializeObject();
+					
+					if(pack) {
+					
+						if (pack.pubkey) { 
+							enc.api('api/manage', function(status, res) { 
+								enc.page('keysmanager'); 
+								notify('New Key has been successfully imported to Your Key Manager.', 'key');
+							}, 'POST', pack); 
+						} else { 
+							enc.api('api/manage', function(status, res) { 
+								enc.page('keysmanager'); 
+								notify('New Key has been successfully added to Your Key Manager.', 'key');
+							}, 'POST', pack); 
+						} 
+					
+					}
+					
+				});
+			
+			})( encedo );	
+			
+			(function(enc){
+			
+				var form = $('form#formatdevice_form');
+				var form_more = $('form#formatdevice_more');
+				var update_form = $('form#updatedevice_form');
+				
+				var owner = $('input#deviceOwnerName');
+				var contact = $('input#deviceOwnerContact');
+				var storage = $('div#deviceStoragePasswordTest').progressBar();
+				var device = $('div#deviceDevicePasswordTest').progressBar();
+				var hidden = $('div#deviceHiddenPasswordTest').progressBar();
+				
+				var update_owner = $('input#deviceUpdateOwnerName');
+				var update_contact = $('input#deviceUpdateOwnerContact');
+				var update_storage = $('div#deviceUpdateStoragePasswordTest').progressBar();
+				var update_device = $('div#deviceUpdateDevicePasswordTest').progressBar();
+				var update_hidden = $('div#deviceUpdateHiddenPasswordTest').progressBar();
+				
+				var mec = $('#mec');
+				var uniqueid = $('#uniqueid');
+				var encversion = $('#encversion');
+				
+				var labels = ['come on! (too week)', 'few more chars maybe (too week)', 'pretty close (almost)', 'that\'s something (secure enough)', 'great thinking (secure enough)', 'complete pro! (super secure)', 'i am spechless (great!) '];
+				
+				$('input#deviceStoragePassword').on('keyup keypress blur change', function(){
+					var r = zxcvbn($(this).val());
+					storage.set(r.entropy*1.3, labels[Math.floor(r.entropy/12)]);
+				});
+				
+				$('input#deviceDevicePassword').on('keyup keypress blur change', function(){
+					var r = zxcvbn($(this).val());
+					device.set(r.entropy*1.3, labels[Math.floor(r.entropy/12)]);
+				});
+				
+				$('input#deviceHiddenPassword').on('keyup keypress blur change', function(){
+					var r = zxcvbn($(this).val());
+					hidden.set(r.entropy*1.3, labels[Math.floor(r.entropy/12)]);
+				});
+				
+				$('input#deviceUpdateStoragePassword').on('keyup keypress blur change', function(){
+					var r = zxcvbn($(this).val());
+					update_storage.set(r.entropy*1.3, labels[Math.floor(r.entropy/12)]);
+				});
+				
+				$('input#deviceUpdateDevicePassword').on('keyup keypress blur change', function(){
+					var r = zxcvbn($(this).val());
+					update_device.set(r.entropy*1.3, labels[Math.floor(r.entropy/12)]);
+				});
+				
+				$('input#deviceUpdateHiddenPassword').on('keyup keypress blur change', function(){
+					var r = zxcvbn($(this).val());
+					update_hidden.set(r.entropy*1.3, labels[Math.floor(r.entropy/12)]);
+				});
+				
+				enc.register('encedo_connect', function() {
+					enc.connectMiddleware();
+				});
+				
+				var formSetup = $('#setup_form');
+				
+				enc.register('setup_change', function() {
+					var pack = formSetup.serializeObject();
+					if(pack) {
+						enc.location = pack.location;
+						enc.connectMiddleware();
+						notify('New Encedo Middleware has been successfully set up and now it is trying to connect.', 'key');
+					}
+				});
+				
+				enc.register('formatdevice', function() {
+					enc.api('api/info', function(status, res) { 
+						if(status) {
+							owner.val(res.owner);
+							contact.val(res.contact);
+						}
+					}); 
+				});
+				
+				enc.register('updatedevice', function() {
+					enc.api('api/info', function(status, res) { 
+						if(status) {
+							update_owner.val(res.owner);
+							update_contact.val(res.contact);
+						}
+					}); 
+				});
+				
+				enc.register('formatdevice_after', function() {
+					enc.api('api/info', function(status, res) { 
+						if(status) {
+							uniqueid.text(res.unique_id);
+						}
+					}); 
+					enc.api('api/version', function(status, res) { 
+						if(status) {
+							encversion.text(res.app);
+						}
+					}); 
+				});
+				
+				enc.register('formatdevice_new', function() {
+				
+					var pack = form.serializeObject();
+					if(pack) {
+						if(pack.appdrivesize) pack.appdrivesize = parseInt(pack.appdrivesize)*512;					
+						enc.api('api/format', function(status, res) { 
+							if(status == 'success') {
+								notify('Device has been successfully formated.', 'key');
+								enc.page('formatdevice_after'); 
+								mec.text(res.mec);
+							} else {
+								notify('Problem occured while trying to format device.', 'warning');
+								enc.page('formatdevice'); 
+							}
+						}, 'POST', '-J -f {{#name}} -o {{name}}{{/name}}{{#contact}} -c {{contact}}{{/contact}}{{#storage}} -p {{storage}}{{/storage}}{{#device}} -P {{device}}{{/device}}{{#hidden}} -H {{hidden}}{{/hidden}}{{#pin}} -A {{pin}}{{/pin}} -Q {{devicemaxpass}} -W {{storagemaxpass}} -E {{hiddenmaxpass}} -R {{authmaxpass}} -b {{#allowbackup}}TRUE{{/allowbackup}}{{^allowbackup}}FALSE{{/allowbackup}} -t {{#allowplain}}TRUE{{/allowplain}}{{^allowplain}}FALSE{{/allowplain}} -s {{appdrivesize}} -U {{#randomusb}}TRUE{{/randomusb}}{{^randomusb}}FALSE{{/randomusb}}', pack, 15000);
+					}
+					
+				});
+				
+				enc.register('updatedevice_new', function() {
+					var pack = update_form.serializeObject();		
+					if(pack) {
+						enc.api('api/format', function(status, res) { 
+							if(status == 'success') {
+								enc.page('updatedevice'); 
+								notify('Device information has been successfully changed.', 'key');
+							} else {
+								notify('Problem occured while trying to change device information. Please try again.', 'key');
+							}
+						}, 'POST', '-u{{#name}} -o {{name}}{{/name}}{{#contact}} -c {{contact}}{{/contact}}{{#storage}} -p {{storage}}{{/storage}}{{#device}} -P {{device}}{{/device}}{{#hidden}} -H {{hidden}}{{/hidden}}{{#pin}} -A {{pin}}{{/pin}}', pack, 15000); 
+					}
+				});
+			
+			})( encedo );	
+			
+			
+			(function(enc){
+			
+				var device = $('#lockunlock_form_device');
+				var storage = $('#lockunlock_form_storage');
+				var appstorage = $('#lockunlock_form_appstorage');
+				
+				enc.register('lockunlock', function() {
+					enc.api('api/info', function(status, res) { 
+						if(status) {
+						
+							device[0].reset();
+							storage[0].reset();
+							appstorage[0].reset();
+							
+							if(res.status.device_locked) {
+								$('#lockunlock_form_device_unlock').removeClass('noncta');
+								$('#lockunlock_form_device_lock').addClass('noncta');
+								$('#lockunlock_form_device_label').html('is locked! <i class="icon icon-lock-1"></i>');
+							} else {
+								$('#lockunlock_form_device_lock').removeClass('noncta');
+								$('#lockunlock_form_device_unlock').addClass('noncta');
+								$('#lockunlock_form_device_label').html('is unlocked! <i class="icon icon-lock-open"></i>');
+							}
+							if(res.status.apps_storage != 'disabled') {
+								$('#lockunlock_form_appstorage_lock').removeClass('noncta');
+								$('#lockunlock_form_appstorage_unlock').addClass('noncta');
+								$('#lockunlock_form_appstorage_label').html('is unlocked! <i class="icon icon-lock-open"></i>');
+							} else {
+								$('#lockunlock_form_appstorage_unlock').removeClass('noncta');
+								$('#lockunlock_form_appstorage_lock').addClass('noncta');
+								$('#lockunlock_form_appstorage_label').html('is locked! <i class="icon icon-lock-1"></i>');
+							}
+							if(res.status.secure_storage != 'disabled') {
+								$('#lockunlock_form_storage_lock').removeClass('noncta');
+								$('#lockunlock_form_storage_unlock').addClass('noncta');
+								$('#lockunlock_form_storage_label').html('is unlocked! <i class="icon icon-lock-open"></i>');
+							} else {
+								$('#lockunlock_form_storage_unlock').removeClass('noncta');
+								$('#lockunlock_form_storage_lock').addClass('noncta');
+								$('#lockunlock_form_storage_label').html('is locked! <i class="icon icon-lock-1"></i>');
+							}
+							
+						}
+					}); 
+				});
+				
+				enc.register('lockunlock_form_device_lock', function() {
+					enc.api('api/lock/device', function(status, res) { 
+						$('#lockunlock_form_device_unlock').removeClass('noncta');
+						$('#lockunlock_form_device_lock').addClass('noncta');
+						$('#lockunlock_form_device_label').html('is locked! <i class="icon icon-lock-1"></i>');
+						notify('Device is locked!', 'lock-1');
+					}); 
+				});
+				
+				enc.register('lockunlock_form_device_unlock', function() {
+					var pack = device.serializeObject();
+					if(pack) {
+						enc.api('api/unlock/device', function(status, res) { 
+							$('#lockunlock_form_device_lock').removeClass('noncta');
+							$('#lockunlock_form_device_unlock').addClass('noncta');
+							$('#lockunlock_form_device_label').html('is unlocked! <i class="icon icon-lock-open"></i>');
+							notify('Device is unlocked!', 'lock-open');
+						}, 'POST', pack); 
+						//}, 'POST', '-d{{^device}} -p {{devicepassword}}{{/device}}', pack); 
+					}
+				});
+				
+				enc.register('lockunlock_form_storage_lock', function() {
+					enc.api('api/lock/encstorage', function(status, res) { 
+						$('#lockunlock_form_storage_unlock').removeClass('noncta');
+						$('#lockunlock_form_storage_lock').addClass('noncta');
+						$('#lockunlock_form_storage_label').html('is locked! <i class="icon icon-lock-1"></i>');
+						notify('Storage is locked!', 'lock-1');
+					}); 
+				});
+				
+				enc.register('lockunlock_form_storage_unlock', function() {
+					var pack = storage.serializeObject();
+					if(pack) {
+						enc.api('api/unlock/encstorage', function(status, res) { 
+							$('#lockunlock_form_storage_lock').removeClass('noncta');
+							$('#lockunlock_form_storage_unlock').addClass('noncta');
+							$('#lockunlock_form_storage_label').html('is unlocked! <i class="icon icon-lock-open"></i>');
+							notify('Storage is unlocked!', 'lock-open');
+						}, 'POST', pack); 
+						//}, 'POST', '-s{{^storage}} {{^write}}-r {{/write}}-p {{storagepassword}}{{/storage}}', pack); 
+					}
+				});
+				
+				enc.register('lockunlock_form_appstorage_lock', function() {
+					enc.api('api/lock/appstorage', function(status, res) { 
+						$('#lockunlock_form_appstorage_unlock').removeClass('noncta');
+						$('#lockunlock_form_appstorage_lock').addClass('noncta');
+						$('#lockunlock_form_appstorage_label').html('is locked! <i class="icon icon-lock-1"></i>');
+						notify('Application storage is locked!', 'lock-1');
+					}); 
+				});
+				
+				enc.register('lockunlock_form_appstorage_unlock', function() {
+					var pack = appstorage.serializeObject();
+					if(pack) {
+						enc.api('api/unlock/appstorage', function(status, res) { 
+							$('#lockunlock_form_appstorage_lock').removeClass('noncta');
+							$('#lockunlock_form_appstorage_unlock').addClass('noncta');
+							$('#lockunlock_form_appstorage_label').html('is unlocked! <i class="icon icon-lock-open"></i>');
+							notify('Application storage is unlocked!', 'lock-open');
+						}, 'POST', pack); 
+						//}, 'POST', '-a{{^appstorage}} -p {{appstoragepassword}}{{/appstorage}}', pack); 
+					}
+				});
+
+			})( encedo );	
+			
+			
+			(function(enc){
+			
+				var form_crypt = $('form#message_crypt_form');
+				var form_decrypt = $('form#message_decrypt_form');
+				var crypt_text = $('#message_aftercrypt_text');
+				var decrypt_text = $('#message_afterdecrypt_text');
+				var decrypt = $('#message_decrypt_text');
+				var col = $('.collection[rel=keysmanagerget]').collection();
+				var encrypt_text = $('#message_crypt_text');
+				var key_type = $('#message_receiver');
+				var remaining = $('#encrypt_remaining');
+				
+				encrypt_text.on('keyup keypress blur change', function(ev){
+					var txt = window.btoa(encodeURIComponent(encrypt_text.val()));
+					remaining.val(512-txt.length);
+				});
+
+				enc.register('message_encrypt', function(){
+					form_crypt[0].reset();
+					enc.api('api/manage', function(status, res) {
+						col.empty();
+						if(status == 'success' && res && res.items) {
+							$.each(res.items, function(key ,value){
+								res.items[key].pubkeyshort = res.items[key].pubkey.substr(0,30) + '...';
+							});
+							col.add(res.items.reverse());
+						}
+					});
+				});
+				
+				enc.register('message_crypt_send', function() {
+					
+					encrypt_text.val(encrypt_text.val());
+					var pack = form_crypt.serializeObject();  
+					if(pack) {
+						if(pack.text_plain) pack.text_plain = window.btoa(encodeURIComponent(encrypt_text.val()));					
+						enc.api('api/encrypt/message', function(status, res) { 
+							if(status == 'success' && res) {
+								crypt_text.val(window.btoa(JSON.stringify(res)));
+							} else {
+								crypt_text.val('Error occurred.');
+							}
+						}, 'POST', { 'pubkey': pack.pubkey, 'msg': pack.text_plain, 'type': key_type.find(":selected").attr('data-type')}); 
+					}
+				});
+				
+				enc.register('message_crypt_send_email', function() {
+					
+					encrypt_text.val(encrypt_text.val());
+					var pack = form_crypt.serializeObject();  
+					if(pack) {
+					
+						if(pack.text_plain) pack.mgs = window.btoa(encodeURIComponent(encrypt_text.val()));					
+						enc.api('api/encrypt/message', function(status, res) { 
+							if(status == 'success' && res) {
+							
+								var fin = window.btoa(JSON.stringify(res));
+								crypt_text.val(fin);
+								
+								if(confirm('Message will be send to ' + key_type.find(":selected").attr('rel'))) {
+								
+									$.ajax({
+									  type: 'POST',
+									  url: 'https://encedo.com/EncedoKey/support/send_message.php',
+									  dataType: 'json',
+									  contentType: 'application/json; charset=utf-8',
+									  data: JSON.stringify({ 'msg': { 'ciphertext': fin }, 'to': { 'descr': key_type.find(":selected").attr('rel'), 'email': key_type.find(":selected").attr('rel') } }),
+									  xhrFields: { withCredentials: false },
+									  headers: { },
+									  success: function(res) { console.log(res); 
+										notify('Encrypted Message has been sent successfully.', 'mail');
+									  },
+									  error: function(res) { console.log(res); 
+										notify('Error occured while sending encrypted message.', 'lock-warning');
+									  }
+									});
+								
+								}
+								
+							} else {
+								crypt_text.val('Error occurred.');
+							}
+						}, 'POST', pack); 
+						
+					}
+				});
+				
+				enc.register('message_decrypt', function() {
+
+					if(enc.args && enc.args.msg_id) {
+						$.ajax({
+						  type: 'POST',
+						  url: 'https://encedo.com/EncedoKey/support/get_message.php',
+						  dataType: 'json',
+						  contentType: 'application/json; charset=utf-8',
+						  data: JSON.stringify({ 'id': enc.args.msg_id }),
+						  xhrFields: { withCredentials: false },
+						  headers: { },
+						  success: function(res) { 
+							console.log(res); 
+							decrypt.val(res.message);
+							enc.action('message_decrypt_send');
+						  }, error: function(res) { 
+							console.log(res); 
+						  }
+						});
+					} else {
+						form_decrypt[0].reset();
+					}
+
+				});
+				
+				enc.register('message_decrypt_send', function() {
+					var pack = form_decrypt.serializeObject();  
+					if(pack) {
+						enc.api('api/decrypt/message', function(status, res) { 
+							if(status == 'success' && res.data) {
+								decrypt_text.val(decodeURIComponent(window.atob(res.data)));
+								decrypt_text.val(decrypt_text.val());
+							} else {
+								decrypt_text.val('');
+								notify('Error occurred while trying to decrypt message.', 'warning');
+							}
+						}, 'POST', {'msg': decrypt.val()}); 
+					}
+				});
+				
+			
+			})( encedo );	
+
+			(function(enc){		
+			
+				var file_encrypt_form = $('form#file_encrypt_form');
+				var file_key_type = $('select#file_receiver');
+				var file_key_typer = $('input#file_receiver_type');
+				var file_col = file_key_type.collection();
+				var file_to_encrypt = $('input#file_to_encrypt');
+				var file_message = $("#file_message");
+				var dropbox = $('div#file_to_encrypt_drop');
+				var file_receiver_pipeid = $("#file_receiver_pipeid");
+				var label = $('span#file_encrypt_send_label');
+				
+				var file_size = 0;
+				var file_tag = '';
+				var period = false;
+				
+				dropbox[0].addEventListener("dragenter", dragenter, false);
+				dropbox[0].addEventListener("dragover", dragover, false);
+				dropbox[0].addEventListener("drop", drop, false);
+				
+				function randomString(length, chars) {
+					var result = '';
+					for (var i = length; i > 0; --i) result += chars[Math.round(Math.random() * (chars.length - 1))];
+					return result;
+				}
+				
+				function dragenter(e) {
+					e.stopPropagation();
+					e.preventDefault();
+				}
+
+				function dragover(e) {
+					e.stopPropagation();
+					e.preventDefault();
+				}
+				
+				function drop(e) {
+					e.stopPropagation();
+					e.preventDefault();
+					var dt = e.dataTransfer;
+					var files = dt.files;
+					dropbox.text(files[0].name);
+					handleFiles(files);
+				}
+				
+				function handleFiles(files) {
+					console.log(files);
+				}
+				
+				function checkAv(tag) {
+					file_message.html('<a href="http://encedokey.com:8080/stream/' + tag + '" download="Encrypted_file_'+tag+'"></a>');
+					file_message.find('a')[0].click();
+				}
+				
+				var alreadyStarted = false;
+				
+				var options = { 
+					headers: {"Content-Disposition":"attachment;filename=file.txt"},
+					async: true,
+					beforeSend: function() {
+						$("#file_progress").show();
+						//clear everything
+						$("#file_bar").width('0%');
+						file_message.html("");
+						$("#file_percent").html("0%");
+						file_size = file_to_encrypt[0].files[0].size;
+						label.html('Preparing...');
+					},
+					uploadProgress: function(event, position, total, percentComplete) {						
+						$("#file_bar").width(percentComplete+'%');
+						$("#file_percent").html(percentComplete+'%');
+						label.html('Encrypting in progres...');
+					},
+					success: function(response, status, xhr) {
+						$("#file_bar").width('100%');
+						$("#file_percent").html('100%');
+						//file_receiver_pipeid.val(randomString(16, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'));
+						file_receiver_pipeid.val('1234567890123456');
+						label.html('Encryption complete! <i class="icon icon-ok"></i>');
+					},
+					complete: function(response, a, b, c) {	
+						file_message.html('');
+						label.html('Encrypt file');
+						//file_tag = response.responseJSON.tag;
+						setTimeout(function(){
+							//console.log('Pierwsze sprawdzenie dla ' . file_tag);
+							
+						}, (Math.ceil(file_size/250)));
+					},
+					error: function() {
+						file_message.html('<font color="red">ERROR: unable to upload files</font>');
+					}
+				}; 
+ 
+				file_encrypt_form.ajaxForm(options);
+
+				enc.register('file_encrypt', function(){
+					file_encrypt_form[0].reset();
+					$("#file_bar").width('0%');
+					$("#file_percent").html("0%");
+					//file_receiver_pipeid.val(randomString(16, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'));
+					file_receiver_pipeid.val('1234567890123456');
+					file_message.html('');
+					dropbox.text('or drop file here');
+					enc.api('api/manage', function(status, res) {
+						file_col.empty();
+						if(status == 'success' && res && res.items) {
+							$.each(res.items, function(key ,value){
+								res.items[key].pubkeyshort = res.items[key].pubkey.substr(0,30) + '...';
+							});
+							file_col.add(res.items.reverse());
+						}
+					});
+				});
+				
+				enc.register('file_encrypt_send', function() {
+					file_key_typer.val(file_key_type.find(":selected").attr('data-type'));
+					checkAv('1234567890123456');
+					setTimeout(function(){
+						file_encrypt_form.submit();
+					}, 3000);
+				});
+			
+			})( encedo );	
+			
+			(function(enc){		
+			
+				var file_decrypt_form = $('form#file_decrypt_form');
+				var file_to_decrypt = $('input#file_to_decrypt');
+				var file_message = $("#file_demessage");
+				var file_decrypt_pipeid = $("#file_decrypt_pipeid");
+				var dropbox = $('div#file_to_decrypt_drop');
+				var label = $('span#file_decrypt_send_label');
+
+				var file_size = 0;
+				var file_tag = false;
+				var period = false;
+				
+				dropbox[0].addEventListener("dragenter", dragenter, false);
+				dropbox[0].addEventListener("dragover", dragover, false);
+				dropbox[0].addEventListener("drop", drop, false);
+				
+				function randomString(length, chars) {
+					var result = '';
+					for (var i = length; i > 0; --i) result += chars[Math.round(Math.random() * (chars.length - 1))];
+					return result;
+				}
+				
+				function dragenter(e) {
+					e.stopPropagation();
+					e.preventDefault();
+				}
+
+				function dragover(e) {
+					e.stopPropagation();
+					e.preventDefault();
+				}
+				
+				function drop(e) {
+					e.stopPropagation();
+					e.preventDefault();
+					var dt = e.dataTransfer;
+					var files = dt.files;
+					dropbox.text(files[0].name);
+					handleFiles(files);
+				}
+				
+				function handleFiles(files) {
+					console.log(files);
+				}
+				
+				function checkAv(tag) {
+					file_message.html('<a href="http://encedokey.com:8080/stream/' + tag + '" download="Encrypted_file_'+tag+'"></a>');
+					file_message.find('a')[0].click();
+				}
+				
+				var alreadyStarted = false;
+				
+				var options = { 
+					headers: {"Content-Disposition":"attachment;filename=file.txt"},
+					beforeSend: function() {
+						$("#file_deprogress").show();
+						//clear everything
+						$("#file_debar").width('0%');
+						file_message.html("");
+						$("#file_depercent").html("0%");
+						file_size = file_to_decrypt[0].files[0].size;
+						label.html('Preparing...');
+					},
+					uploadProgress: function(event, position, total, percentComplete) {
+						$("#file_debar").width(percentComplete+'%');
+						$("#file_depercent").html(percentComplete+'%');
+						label.html('Decrypting in progres...');
+					},
+					success: function() {
+						$("#file_debar").width('100%');
+						$("#file_depercent").html('100%');
+						//file_decrypt_pipeid.val(randomString(16, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'));
+						file_decrypt_pipeid.val('1234567890123456');
+						label.html('Decryption complete! <i class="icon icon-ok"></i>');
+					},
+					complete: function(response) {	
+						file_message.html('Decrypt in progress...');
+						label.html('Decrypt file');
+						//file_tag = response.responseJSON.tag;
+						//setTimeout(function(){
+						//	console.log('Pierwsze sprawdzenie dla ' . file_tag);
+						//	checkAv(file_tag);
+						//}, (Math.ceil(file_size/250)));
+					},
+					error: function() {
+						file_message.html('<font color="red">ERROR: unable to upload files</font>');
+					}
+				}; 
+ 
+				file_decrypt_form.ajaxForm(options);
+				
+				file_to_decrypt[0].addEventListener("change", function(){
+					//file_decrypt_form.submit();
+					//enc.action('file_decrypt_send');
+				}, false);
+
+				enc.register('file_decrypt', function(){
+					file_decrypt_form[0].reset();
+					$("#file_debar").width('0%');
+					$("#file_depercent").html("0%");
+					file_message.html('');
+					dropbox.text('or drop file here');
+					//file_decrypt_pipeid.val(randomString(16, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'));
+					file_decrypt_pipeid.val('1234567890123456');
+				});
+				
+				enc.register('file_decrypt_send', function() {
+					checkAv('1234567890123456');
+					setTimeout(function(){
+						file_decrypt_form.submit();
+					}, 3000);
+				});
+			
+			})( encedo );	
+			
+		})( jQuery, window );
+		</script>
+	</body>
+</html>
