@@ -1505,6 +1505,7 @@
 
 				enc.register('message_encrypt', function(){
 					form_crypt[0].reset();
+					crypt_text.fadeOut();
 					enc.api('api/manage', function(status, res) {
 						col.empty();
 						if(status == 'success' && res && res.items) {
@@ -1524,9 +1525,11 @@
 						if(pack.text_plain) pack.text_plain = window.btoa(encodeURIComponent(encrypt_text.val()));					
 						enc.api('api/encrypt/message', function(status, res) { 
 							if(status == 'success' && res) {
+								crypt_text.fadeIn();
 								crypt_text.val(window.btoa(JSON.stringify(res)));
 							} else {
 								crypt_text.val('Error occurred.');
+								notify('Error occurred while trying to encrypt message.', 'attention');
 							}
 						}, 'POST', { 'pubkey': pack.pubkey, 'msg': pack.text_plain, 'type': key_type.find(":selected").attr('data-type')}); 
 					}
@@ -1543,6 +1546,7 @@
 							if(status == 'success' && res) {
 							
 								var fin = window.btoa(JSON.stringify(res));
+								crypt_text.fadeIn();
 								crypt_text.val(fin);
 								
 								if(confirm('Message will be send to ' + key_type.find(":selected").attr('rel'))) {
@@ -1594,6 +1598,7 @@
 						});
 					} else {
 						form_decrypt[0].reset();
+						decrypt_text.fadeOut();
 					}
 
 				});
@@ -1603,6 +1608,7 @@
 					if(pack) {
 						enc.api('api/decrypt/message', function(status, res) { 
 							if(status == 'success' && res.data) {
+								decrypt_text.fadeIn();
 								decrypt_text.val(decodeURIComponent(window.atob(res.data)));
 								decrypt_text.val(decrypt_text.val());
 							} else {
