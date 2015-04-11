@@ -825,7 +825,7 @@ String.prototype.replaceAll = function( token, newToken, ignoreCase ) {
 	$.fn.encedoApp.defaults = {
 		'start': 'start',
 		'setupPage': 'setup',
-		'location': 'encedokey.com'
+		'location': location.host
 	}
 	
 	$.fn.collection = function(settings) {

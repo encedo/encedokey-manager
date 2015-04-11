@@ -312,7 +312,14 @@
 									<input type="text" name="contact" id="keyDescription" title="Email address" placeholder="Email address" data-nonempty="false" data-regexp="email" data-spacesafe="true" data-maxlength="64">
 								</label><!-- -otpLabel -->
 								
-								<label for="keyType">
+								<label for="keyImport" class="withCheckbox">
+									<input type="checkbox" name="import" id="keyImport" value="1" class="openIfChecked" rel="keymanager_form_import">
+									<span>Show options</span>
+								</label><!-- -otpLabel -->
+								
+								<div id="keymanager_form_import" class="index">
+								
+									<label for="keyType">
 									<span>Type</span>
 									<div class="wrapper">
 										<select name="type" id="keyType" title="Key type" data-nonempty="true" data-regexp="simple" data-maxlength="32">
@@ -322,13 +329,6 @@
 										</select>
 									</div><!-- .selectWrapper -->
 								</label><!-- -otpLabel -->
-								
-								<label for="keyImport" class="withCheckbox">
-									<input type="checkbox" name="import" id="keyImport" value="1" class="openIfChecked" rel="keymanager_form_import">
-									<span>Import key pair</span>
-								</label><!-- -otpLabel -->
-								
-								<div id="keymanager_form_import" class="index">
 
 									<label for="keyPubKey">
 										<span>Public key (only for import)</span>
@@ -374,7 +374,7 @@
 						
 						<p>It`s as easy as it only can be. Choose the recipient of the encrypted file. Then to provie an extra secyrity type the password (it`s optional). </p>
 						
-						<form method="POST" action="//encedokey.com/stream/encrypt" id="file_encrypt_form" enctype="multipart/form-data">
+						<form method="POST" action="/stream/encrypt" id="file_encrypt_form" enctype="multipart/form-data">
 						
 							<fieldset>
 							
@@ -425,7 +425,7 @@
 						
 						<p>This application will let you process a file. To encrypt file choose "Encrypt". To decrypt... you know what to do :)</p>
 						
-						<form method="POST" action="//encedokey.com/stream/decrypt" id="file_decrypt_form" enctype="multipart/form-data">
+						<form method="POST" action="/stream/decrypt" id="file_decrypt_form" enctype="multipart/form-data">
 						
 							<fieldset>
 							
