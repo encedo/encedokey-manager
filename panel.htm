@@ -60,6 +60,7 @@
 					<h1><a href="#" class="openActivity" rel="start"><span class="index">Encedo</span></a></h1>
 					<div id="APPtools">
 						<a class="icon icon-menu-1 menu" title="Click to see menu"><span class="index">Menu</span></a><!-- .menu-->
+						<a href="#" class="icon icon-lock-1 openActivity" rel="lockunlock" title="Lock/Unblock"><span class="index">Settings</span></a><!-- .refresh-->
 						<a href="#" class="icon icon-cogs openActivity" rel="setup" title="EncedoKey settings"><span class="index">Settings</span></a><!-- .refresh-->
 						<a href="#" class="icon icon-arrows-ccw refresh" title="Refresh EncedoKey"><span class="index">Refresh</span></a><!-- .refresh-->
 					</div><!-- #APPtools -->
@@ -1430,12 +1431,12 @@
 					var pack = device.serializeObject();
 					if(pack) {
 						enc.api('api/unlock/device', function(status, res) { 
+							device[0].reset();
 							$('#lockunlock_form_device_lock').removeClass('noncta');
 							$('#lockunlock_form_device_unlock').addClass('noncta');
 							$('#lockunlock_form_device_label').html('is unlocked! <i class="icon icon-lock-open"></i>');
 							notify('Device is unlocked!', 'lock-open');
 						}, 'POST', pack); 
-						//}, 'POST', '-d{{^device}} -p {{devicepassword}}{{/device}}', pack); 
 					}
 				});
 				
@@ -1452,12 +1453,12 @@
 					var pack = storage.serializeObject();
 					if(pack) {
 						enc.api('api/unlock/encstorage', function(status, res) { 
+							storage[0].reset();
 							$('#lockunlock_form_storage_lock').removeClass('noncta');
 							$('#lockunlock_form_storage_unlock').addClass('noncta');
 							$('#lockunlock_form_storage_label').html('is unlocked! <i class="icon icon-lock-open"></i>');
 							notify('Storage is unlocked!', 'lock-open');
 						}, 'POST', pack); 
-						//}, 'POST', '-s{{^storage}} {{^write}}-r {{/write}}-p {{storagepassword}}{{/storage}}', pack); 
 					}
 				});
 				
@@ -1474,12 +1475,12 @@
 					var pack = appstorage.serializeObject();
 					if(pack) {
 						enc.api('api/unlock/appstorage', function(status, res) { 
+							appstorage[0].reset();
 							$('#lockunlock_form_appstorage_lock').removeClass('noncta');
 							$('#lockunlock_form_appstorage_unlock').addClass('noncta');
 							$('#lockunlock_form_appstorage_label').html('is unlocked! <i class="icon icon-lock-open"></i>');
 							notify('Application storage is unlocked!', 'lock-open');
 						}, 'POST', pack); 
-						//}, 'POST', '-a{{^appstorage}} -p {{appstoragepassword}}{{/appstorage}}', pack); 
 					}
 				});
 
@@ -1572,7 +1573,7 @@
 							} else {
 								crypt_text.val('Error occurred.');
 							}
-						}, 'POST', pack); 
+						}, 'POST', { 'pubkey': pack.pubkey, 'msg': pack.text_plain, 'type': key_type.find(":selected").attr('data-type')}); 
 						
 					}
 				});
