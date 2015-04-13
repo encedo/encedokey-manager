@@ -488,7 +488,7 @@ String.prototype.replaceAll = function( token, newToken, ignoreCase ) {
 		app.encedoInfo = false;
 		app.args = false;
 		
-		if(app.location.indexOf('encedo.com') == -1) {
+		if(app.location.indexOf('encedo.com') !== -1) {
 			app.location = 'encedokey.com';
 		}
 		
