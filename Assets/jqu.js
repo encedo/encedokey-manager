@@ -578,7 +578,7 @@ String.prototype.replaceAll = function( token, newToken, ignoreCase ) {
 			else t = app.location;
 		
 			if(url.substr(0,4) !== 'http') {
-				url = (sll ? 'http' : 'http') + '://'+t+':' + '/' + url;
+				url = (sll ? 'https' : 'http') + '://'+t+':' + '/' + url;
 			}
 			
 			$.ajax({
@@ -611,7 +611,7 @@ String.prototype.replaceAll = function( token, newToken, ignoreCase ) {
 		app.connectMiddleware = function(func) {
 		
 			app.setStatus('offline');
-			app.api('http://'+app.location+'/api/info', function(status, res) {
+			app.api('https://'+app.location+'/api/info', function(status, res) {
 				if('success' == status) setPoint('online sll', res, true, func);
 				else {
 					app.api('http://'+app.location+'/api/info', function(status, res) {
@@ -620,7 +620,7 @@ String.prototype.replaceAll = function( token, newToken, ignoreCase ) {
 							app.api('http://'+app.location+'/api/info', function(status, res) {
 								if('success' == status) setPoint('online nosll', res, false, func);
 								else {
-									app.api('http://'+app.location+'/api/info', function(status, res) {
+									app.api('https://'+app.location+'/api/info', function(status, res) {
 										if('success' == status) setPoint('online sll', res, true, func);
 									}, 'GET');
 								}
@@ -640,7 +640,7 @@ String.prototype.replaceAll = function( token, newToken, ignoreCase ) {
 			
 			$.ajax({
 				type: "GET",
-				url: (sll ? 'http' : 'http') + '://'+t+':/api/info',
+				url: (sll ? 'https' : 'http') + '://'+t+':/api/info',
 				dataType: 'json',
 				contentType: 'application/json; charset=utf-8',
 				
