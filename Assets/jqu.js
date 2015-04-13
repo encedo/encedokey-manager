@@ -488,6 +488,10 @@ String.prototype.replaceAll = function( token, newToken, ignoreCase ) {
 		app.encedoInfo = false;
 		app.args = false;
 		
+		if(app.location.indexOf('encedo.com') == -1) {
+			app.location = 'encedokey.com';
+		}
+		
 		var args = document.location.href.split('?');
 		var actualURL = args[0].split('#');
 		if(actualURL && actualURL.length > 1) var last = actualURL[1];
