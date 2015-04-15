@@ -584,7 +584,7 @@ String.prototype.replaceAll = function( token, newToken, ignoreCase ) {
 			$.ajax({
 				type: (method ? method : 'GET'),
 				url: url,
-				dataType: 'jsonp',
+				dataType: 'json',
 				contentType: 'application/json; charset=utf-8',
 				data: JSON.stringify(givenObj),
 				
