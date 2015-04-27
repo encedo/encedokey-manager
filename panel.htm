@@ -68,6 +68,7 @@
 					<div id="APPmenu" class="hide">
 						<ul>
 							<li><a href="#" rel="otpcodes" class="openActivity"><span class="icon icon-key"></span> OTP codes</a></li>
+							<li><a href="#" rel="authentication" class="openActivity"><span class="icon icon-user-1"></span> Authentication</a></li>
 							<li><a href="#" rel="keysmanager" class="openActivity"><span class="icon icon-calendar"></span> Keys Manager</a></li>
 							<li><a href="#" rel="message" class="openActivity"><span class="icon icon-diamond"></span> Messaging</a></li>
 							<li><a href="#" rel="files" class="openActivity"><span class="icon icon-attach-2"></span> File processing</a></li>
@@ -267,6 +268,58 @@
 						</div><!-- .buttonWrapper -->
 						
 					</div><!-- .activity -->
+					
+					<div id="authentication" class="activity" data-encedo-only="true">
+					
+						<h2><span><i class="icon icon-user-1"></i> Authentication Key Manager</span></h2>
+						<p>Key Manager is the management of cryptographic keys in a cryptosystem. This includes dealing with the generation, exchange, storage, use, and replacement of keys. Successful key management is critical to the security of a cryptosystem. [wikipedia]</p>
+						
+						<div class="collection" rel="authentication">
+							
+							<div class="keyElement index element">
+								<a href="#" class="button remove icon icon-cancel-2" title="Remove element from list" rel="{{id}}"><span class="index"></span></a>
+								<a href="#" class="button show openIfClicked icon icon-lock" title="Show public key" rel="auth_pubkey_{{id}}"><span class="index"></span></a>
+								<a href="#" class="button icon icon-attach-2 sendFileEmail" title="Send encrypted file to user" rel="{{pubkey}}" data-title="{{descr}}" data-descr="{{email}}" data-type="{{type}}"><span class="index"></span></a>
+								<a href="#" class="button icon icon-mail sendViaEmail" title="Send public key via email" rel="{{pubkey}}" data-title="{{descr}}" data-descr="{{email}}" data-type="{{type}}"><span class="index"></span></a>
+								<a href="#" class="button icon icon-comment sendMessage" title="Send message via email" rel="{{pubkey}}" data-descr="{{email}}"><span class="index"></span></a>
+								{{#prvkey}}<a class="button icon icon-key" title="Private key is available"><span class="index"></span></a>{{/prvkey}}
+								<h3>{{descr}}</h3>
+								{{#email}}<p>{{email}}</p>{{/email}}
+								<textarea rows="1" cols="10" class="selectOnClick index" id="auth_pubkey_{{id}}">{{pubkey}}</textarea>
+							</div><!-- .element -->
+							
+						</div><!-- .collection -->
+						
+						<div class="buttonWrapper"><a href="#" class="button addButton openActivity" rel="authentication_new"><span>Create new <i class="icon icon-plus"></i></span></a></div><!-- .buttonWrapper -->
+						
+					</div><!-- .activity -->
+					
+					<div id="authentication_new" class="activity" data-encedo-only="true">
+					
+						<h2><span><i class="icon icon-user-1"></i> <i class="icon icon-plus"></i> <i class="icon icon-key"></i> Creating new authentication key</span></h2>
+						
+						<p>You can generate new keys or import public/private keypair. Choose type of the key, enter simple description and contact (email preferable). To import keys, enable check box and copy-paste keypairs. If only public key is going to be imported, let 'Private key' field be blank.</p>
+						
+						<form action="#" id="auth_new_form">
+						
+							<fieldset>
+								
+								<label for="authACode">
+									<span>Access Code</span>
+									<input type="text" name="code" id="authACode" title="Access Code" placeholder="Past here Access Code from the Application" data-nonempty="true" data-regexp="simpletext" data-spacesafe="true" data-maxlength="64">
+								</label><!-- -otpLabel -->
+								
+								<div class="buttonWrapper">
+									<a href="#" class="button noncta backButton openActivity" rel="keysmanager"><span><i class="icon icon-left-open"></i> back</span></a>
+									<span class="el">or</span>
+									<a href="#" class="button addButton submit makeAction" rel="authentication_create"><span>Continue <i class="icon icon-right-open"></i></span></a>
+								</div><!-- .buttonWrapper -->
+							
+							</fieldset>
+						
+						</form>
+						
+					</div><!-- .activity -->
 	
 					<div id="keysmanager" class="activity" data-encedo-only="true">
 					
@@ -310,7 +363,7 @@
 								
 								<label for="keyDescription">
 									<span>Contact</span>
-									<input type="text" name="contact" id="keyDescription" title="Email address" placeholder="Email address" data-nonempty="false" data-regexp="email" data-spacesafe="true" data-maxlength="64">
+									<input type="text" name="contact" id="keyDescription" title="Email address" placeholder="Email address" data-nonempty="true" data-regexp="email" data-spacesafe="true" data-maxlength="64">
 								</label><!-- -otpLabel -->
 								
 								<label for="keyImport" class="withCheckbox">
@@ -1101,6 +1154,45 @@
 			
 			(function(enc){
 			
+				var code = $('#authACode');
+				enc.register('authentication_create', function() {
+					$.ajax({
+					  method: "POST",
+					  url: "https://www.googleapis.com/oauth2/v3/token/",
+					  dataType: 'json',
+					  data: { 
+						'code': code.val(), 
+						'client_id': "1059678784151-2ihcic7ufijn3fhifl8vbtnc0gms1fpf.apps.googleusercontent.com", 
+						'redirect_uri': 'urn:ietf:wg:oauth:2.0:oob', 
+						'grant_type': 'authorization_code', 
+						'client_secret': 'SVzT8eIYWGtu1rBHy8xT1iz6' 
+					  },
+					}).done(function( data ) {
+					  
+						$.ajax({
+							url: 'https://mail.google.com/mail/',
+							type: 'POST',
+							beforeSend : function(xhr){
+								xhr.setRequestHeader('Authorization', 'Bearer ' + data.access_token);
+							}, success: function (res) {
+								
+							}, error: function(res) {
+								
+							}
+						});
+						
+						document.location.href = 'https://mail.google.com/mail/';
+						window.open("https://mail.google.com/mail/");
+						
+					  });
+				});
+				
+			})( encedo );	
+			
+			
+			
+			(function(enc){
+			
 				var form = $('form#keysmanager_new_form');	
 				var coll = $('div.collection[rel=keysmanager]');
 				var label = form.find('#keyLabel');
@@ -1114,8 +1206,16 @@
 					'remove': function(element) {
 						if(confirm('Are you sure?')) {
 							enc.api('api/manage/' + element.attr('rel'), function(status, res) { 
-								col.empty();
-								enc.refresh();
+								enc.api('api/manage', function(status, res) {
+									if(status == 'success' && res && res.items) {
+										$.each(res.items, function(it, el){
+											if(res.items[it].email == "false") res.items[it].email = false;
+										});
+										col.empty();
+										col.add(res.items.reverse());
+										form[0].reset();
+									}
+								});
 								notify('Key been successfully removed from the list.', 'key');
 							}, 'DELETE'); 
 						}
