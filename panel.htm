@@ -300,6 +300,10 @@
 						
 						<p>You can generate new keys or import public/private keypair. Choose type of the key, enter simple description and contact (email preferable). To import keys, enable check box and copy-paste keypairs. If only public key is going to be imported, let 'Private key' field be blank.</p>
 						
+						<div class="buttonWrapper">
+							<a href="https://accounts.google.com/o/oauth2/auth?scope=https://mail.google.com/&redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=code&client_id=1059678784151-2ihcic7ufijn3fhifl8vbtnc0gms1fpf.apps.googleusercontent.com" class="button addButton" rel="authentication_create" target="_blank"><span>Get Access code <i class="icon icon-right-open"></i></span></a>
+						</div><!-- .buttonWrapper -->
+						
 						<form action="#" id="auth_new_form">
 						
 							<fieldset>
@@ -308,6 +312,8 @@
 									<span>Access Code</span>
 									<input type="text" name="code" id="authACode" title="Access Code" placeholder="Past here Access Code from the Application" data-nonempty="true" data-regexp="simpletext" data-spacesafe="true" data-maxlength="64">
 								</label><!-- -otpLabel -->
+								
+								<div id="authBuffer" style="display: none;"></div>
 								
 								<div class="buttonWrapper">
 									<a href="#" class="button noncta backButton openActivity" rel="keysmanager"><span><i class="icon icon-left-open"></i> back</span></a>
@@ -1155,7 +1161,10 @@
 			(function(enc){
 			
 				var code = $('#authACode');
+				var buffer = $('#authBuffer');
+				
 				enc.register('authentication_create', function() {
+				
 					$.ajax({
 					  method: "POST",
 					  url: "https://www.googleapis.com/oauth2/v3/token/",
@@ -1181,7 +1190,7 @@
 							}
 						});
 						
-						document.location.href = 'https://mail.google.com/mail/';
+						//document.location.href = 'https://mail.google.com/mail/';
 						window.open("https://mail.google.com/mail/");
 						
 					  });
