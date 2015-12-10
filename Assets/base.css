@@ -63,7 +63,7 @@ body.loaded {  }
 #APPmenu ul li a:hover .icon:before { color: #51aca7; }
 #APPmenuHide { display: none; float: right; padding: 10px 30px 0px 10px; margin-right: 10px; background-size: auto 100%; }
 
-body.mid #APPheader, body.small #APPheader { display: block; position: static; width: 100%; border-bottom: 1px solid #51aca7; padding: 0px 0px 0px 0px; box-shadow: 0px 0px 10px 1px rgba(0,198,255,0.1); left: auto; right: auto; top: auto; bottom: auto; }
+body.mid #APPheader, body.small #APPheader { display: block; position: fixed; width: 100%; border-bottom: 1px solid #51aca7; padding: 0px 0px 0px 0px; box-shadow: 0px 0px 10px 1px rgba(0,198,255,0.1); left: 0px; right: 0px; top: 0px; bottom: auto; }
 body.mid #APPheader .wraping, body.small #APPheader .wraping { display: block; background: #fff; padding: 10px 10px 10px 10px; }
 body.mid #APPheader h1, body.small #APPheader h1 { float: Left; }
 body.mid #APPheader h1 a, body.small #APPheader h1 a { margin-top: 17px; }

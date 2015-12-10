@@ -586,6 +586,7 @@ String.prototype.replaceAll = function( token, newToken, ignoreCase ) {
 				url: url,
 				dataType: 'json',
 				contentType: 'application/json; charset=utf-8',
+				crossDomain: true,
 				data: JSON.stringify(givenObj),
 				
 				success: function (res) {	
