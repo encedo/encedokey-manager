@@ -63,7 +63,7 @@ body.loaded {  }
 #APPmenu ul li a:hover .icon:before { color: #51aca7; }
 #APPmenuHide { display: none; float: right; padding: 10px 30px 0px 10px; margin-right: 10px; background-size: auto 100%; }
 
-body.mid #APPheader, body.small #APPheader { display: block; position: fixed; width: 100%; border-bottom: 1px solid #51aca7; padding: 0px 0px 0px 0px; box-shadow: 0px 0px 10px 1px rgba(0,198,255,0.1); left: 0px; right: 0px; top: 0px; bottom: auto; }
+body.mid #APPheader, body.small #APPheader { display: block; position: fixed; width: 100%; border-bottom: 1px solid #51aca7; padding: 0px 0px 0px 0px; box-shadow: 0px 0px 10px 1px rgba(0,198,255,0.1); left: 0px; right: 0px; top: 0px; bottom: auto; backface-visibility: visible; -webkit-backface-visibility: visible; height: auto !important; }
 body.mid #APPheader .wraping, body.small #APPheader .wraping { display: block; background: #fff; padding: 10px 10px 10px 10px; }
 body.mid #APPheader h1, body.small #APPheader h1 { float: Left; }
 body.mid #APPheader h1 a, body.small #APPheader h1 a { margin-top: 17px; }
@@ -76,7 +76,7 @@ body.mid #APPmenu ul li a, body.small #APPmenu ul li a { display: block; padding
 body.mid #APPmenu ul li a:hover, body.small #APPmenu ul li a:hover { background: #eee; color: #222; border-left: 3px solid #666; }
 body.mid #APPmenuHide, body.small #APPmenuHide { display: block; float: right; padding: 10px 30px 0px 10px; margin-right: 10px; background-size: auto 100%; }
 
-body.mid #APPwrapper, body.small #APPwrapper { position: static; display: block; width: 100%; left: auto; right: auto; top: auto; bottom: auto; max-width: 99999px; padding: 0px 20px; }
+body.mid #APPwrapper, body.small #APPwrapper { position: static; display: block; width: 100%; left: auto; right: auto; top: auto; bottom: auto; max-width: 99999px; padding: 90px 20px 0px 20px; }
 body.mid #APPcontent, body.small #APPcontent { display: block; margin: 0 auto; max-width: 700px; }
 
 
@@ -99,12 +99,13 @@ body.mid #APPtools a.menu, body.small #APPtools a.menu { display: inline-block; 
 /* CONTENT CLASSES */
 #APPcontent { min-height: 0px; padding: 10px 10px 30px 10px; text-align: left; line-height: 1.4; }
 #APPcontent h2 { font-size: 28px; margin-bottom: 0px; color: #333; margin-bottom: 30px; padding-top: 10px; font-weight: normal; }
-#APPcontent h2 span { border-bottom: 1px solid #ccc; padding-bottom: 15px; }
+#APPcontent h2 > span { display: inline-block; border-bottom: 1px solid #ccc; padding-bottom: 10px; margin: 0px; }
 #APPcontent h3 { font-size: 22px; margin-bottom: 0px; color: #555; margin-bottom: 5px; font-weight: normal; }
 #APPcontent h3 span { display: inline-block; border-bottom: 1px solid #ddd; padding-bottom: 5px; }
 #APPcontent p { font-size: 17px; margin-bottom: 0px; color: #777; margin-bottom: 20px; }
 #APPcontent p a { color: #769694; text-decoration: none; border-bottom: 1px dashed #A8D6D3; }
 #APPcontent img { margin: 5px; display: inline-block; }
+
 
 #APPcontent .buttonWrapper { text-align: center; padding: 10px 0px 20px 0px; }
 #APPcontent .buttonWrapper .el { display: inline-block; padding: 15px 10px; color: #888; }
