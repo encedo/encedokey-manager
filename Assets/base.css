@@ -236,6 +236,12 @@ body.mid #APPtools a.menu, body.small #APPtools a.menu { display: inline-block; 
 #APPcontent .collection label.element { padding: 7px 0px 7px 0px; border-top: 0; margin: 0px; }
 #APPcontent .collection label.element:hover { background: transparent; padding: 7px 0px 7px 0px; border-top: 0; margin: 0px; }
 
+#APPcontent .collectionHandler { border-top: 1px dashed #999; padding: 10px; text-align: right; margin-bottom: 10px; }
+#APPcontent .collectionPaging { margin-left: 20px; }
+#APPcontent .collectionPaging .pageButton { text-align: center; position: static; display: inline-block; padding-top: 3px; width: 30px; height: 30px; border-radius: 100%; -moz-border-radius: 100%; -webkit-border-radius: 100%; color: #888; margin: 0px 2px; border: 1px dashed #ddd; font-weight: bold; cursor: pointer; -webkit-transition: all 0.43s ease-in-out; -moz-transition: all 0.43s ease-in-out; -o-transition: all 0.43s ease-in-out; transition: all 0.43s ease-in-out; }
+#APPcontent .collectionPaging .pageButton:hover { background-color: #51aca7; color: #eee; text-shadow: 0px 0px 2px #51aca7; border: 1px solid #51aca7; }
+#APPcontent .collectionPaging .pageNowButton { background-color: #51aca7; color: #eee; text-shadow: 0px 0px 2px #51aca7; border: 1px solid #51aca7; }
+
 #APPcontent .changerClass { padding: 10px 0px 30px 0px; }
 #APPcontent .changerClass li { cursor: pointer; }
 

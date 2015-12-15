@@ -446,23 +446,59 @@ String.prototype.replaceAll = function( token, newToken, ignoreCase ) {
 		var collection = prot;
 		collection.find('.element').removeClass('index');
 		var collection_prototype = collection.html();
+		var homanyItems = 0;
+		var pageNow = settings.pageAtStart;
+		var storage = [];
+		var pgHandler = false;
 		
+		if(settings.handler) {
+			x.pgHandler = $('<div class="collectionHandler">Number of elements: <span class="itemCounter">0</span><span class="collectionPaging"></span></div><!-- .collectionHandler -->');
+			x.pgHandler.on('click', '.pageButton', function(ev){
+				pageNow = $(this).attr('rel');
+				x.pgHandler.find('.pageButton').removeClass('pageNowButton');
+				$(this).addClass('pageNowButton');
+				x.draw();
+			});
+			collection.after(x.pgHandler);
+		}
+
 		collection.on('click', '.remove', function(ev){
-			ev.preventDefault();
+			ev.preventDefault();	
 			if(x.remove) x.remove($(this));
 		});
-		
+
 		x.add = function(element) {
-			$.each(element, function(it, el) {
-				x.create(el);
-			});
+			storage = element;
+			homanyItems = element.length;
+			x.draw();
+			if(settings.handler) {
+				x.pgHandler.find('.itemCounter').text(element.length);
+				makePaging();
+			}
+		}
+		
+		x.draw = function() {
+			collection.empty();
+			var alreadyOnThePage = 0;
+			var alreadyNow = 0;
+			$.each(storage, function(it, el) {
+				if(alreadyNow > ((pageNow-1)*settings.perPage-1) && alreadyOnThePage < settings.perPage) {
+					x.create(el);
+					alreadyOnThePage++;
+				}
+				alreadyNow++;
+			});	
+			if(alreadyOnThePage == 0 && alreadyNow > 0) {
+				if(pageNow > 0) pageNow--;
+				x.draw();
+			}
 		}
 		
 		x.create = function(obj) {
 			if(obj) collection.append(Mustache.render(collection_prototype, obj));
 		}
 
-		if(settings && settings.remove) x.remove = settings.remove;
+		if(settings.remove) x.remove = settings.remove;
 		
 		x.change = function() {}
 
@@ -470,6 +506,23 @@ String.prototype.replaceAll = function( token, newToken, ignoreCase ) {
 			collection.empty();
 			if(func) func();
 		}	
+		
+		function makePaging() {
+			var collectionPaging = x.pgHandler.find('.collectionPaging');
+			collectionPaging.empty();
+			if(homanyItems > settings.perPage) {
+				x.pgHandler.removeClass('index');
+				var howManyPages = Math.ceil(homanyItems/settings.perPage);
+				var pageLinks = '';
+				for(i = 1; i <= howManyPages; i++) {
+					pageLinks += '<span class="button pageButton'+(i == pageNow ? ' pageNowButton': '')+'" rel="'+i+'">'+i+'</span>';
+				}
+				collectionPaging.html(pageLinks);
+			}
+			if(howmanyItems <= settingsPerPage) {
+				x.pgHandler.addClass('index');
+			}
+		}
 		
 		collection.empty();
 		
@@ -578,7 +631,7 @@ String.prototype.replaceAll = function( token, newToken, ignoreCase ) {
 			else t = app.location;
 		
 			if(url.substr(0,4) !== 'http') {
-				url = (sll ? 'https' : 'http') + '://'+t+':' + '/' + url;
+				url = (sll ? 'https' : 'http') + '://'+t+'' + '/' + url;
 			}
 			
 			$.ajax({
@@ -597,40 +650,19 @@ String.prototype.replaceAll = function( token, newToken, ignoreCase ) {
 					if(t==="timeout") console.log("got timeout");
 					func(false, x);
 				},
-				timeout: (timeoutA ? timeoutA : 1800)
+				timeout: (timeoutA ? timeoutA : 80800)
 			});
 			
 		}
 		
-		function setPoint(status, middle, issll, func) {
+		function setPoint(status, issll, func) {
 			app.setStatus(status);
-			middleware = middle;
 			sll = issll;
 			setTimeout( function() { app.connect(func); } , 2000);
 		}
 		
 		app.connectMiddleware = function(func) {
-		
-			app.setStatus('offline');
-			app.api('https://'+app.location+'/api/info', function(status, res) {
-				if('success' == status) setPoint('online sll', res, true, func);
-				else {
-					app.api('http://'+app.location+'/api/info', function(status, res) {
-						if('success' == status) setPoint('online nosll', res, false, func);
-						else {
-							app.api('http://'+app.location+'/api/info', function(status, res) {
-								if('success' == status) setPoint('online nosll', res, false, func);
-								else {
-									app.api('https://'+app.location+'/api/info', function(status, res) {
-										if('success' == status) setPoint('online sll', res, true, func);
-									}, 'GET');
-								}
-							}, 'GET');
-						}
-					}, 'GET');
-				}
-			}, 'GET');
-			
+			setPoint('online nosll', false, func);
 		}		
 		
 		// encedo connection
@@ -641,7 +673,7 @@ String.prototype.replaceAll = function( token, newToken, ignoreCase ) {
 			
 			$.ajax({
 				type: "GET",
-				url: (sll ? 'https' : 'http') + '://'+t+':/api/info',
+				url: (sll ? 'https' : 'http') + '://'+t+'/api/info',
 				dataType: 'json',
 				contentType: 'application/json; charset=utf-8',
 				
@@ -660,7 +692,7 @@ String.prototype.replaceAll = function( token, newToken, ignoreCase ) {
 					if(t === "timeout") console.log("got timeout");
 					app.setStatus('offline');
 				},
-				timeout: 700
+				timeout: 8000
 			});
 		}
 		
@@ -840,7 +872,9 @@ String.prototype.replaceAll = function( token, newToken, ignoreCase ) {
     };
 	
 	$.fn.collection.defaults = {
-		'perPage': 10
+		'handler': true,
+		'perPage': 6,
+		'pageAtStart': 1
 	}
 	
 	$.fn.progressBar = function(settings) {
