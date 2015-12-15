@@ -446,82 +446,47 @@ String.prototype.replaceAll = function( token, newToken, ignoreCase ) {
 		var collection = prot;
 		collection.find('.element').removeClass('index');
 		var collection_prototype = collection.html();
-		var homanyItems = 0;
-		var pageNow = settings.pageAtStart;
-		var storage = [];
-		var pgHandler = false;
+		var source = [];
 		
-		if(settings.handler) {
-			x.pgHandler = $('<div class="collectionHandler">Number of elements: <span class="itemCounter">0</span><span class="collectionPaging"></span></div><!-- .collectionHandler -->');
-			x.pgHandler.on('click', '.pageButton', function(ev){
-				pageNow = $(this).attr('rel');
-				x.pgHandler.find('.pageButton').removeClass('pageNowButton');
-				$(this).addClass('pageNowButton');
-				x.draw();
-			});
-			collection.after(x.pgHandler);
-		}
-
 		collection.on('click', '.remove', function(ev){
-			ev.preventDefault();	
+			ev.preventDefault();
 			if(x.remove) x.remove($(this));
 		});
-
-		x.add = function(element) {
-			storage = element;
-			homanyItems = element.length;
-			x.draw();
-			if(settings.handler) {
-				x.pgHandler.find('.itemCounter').text(element.length);
-				makePaging();
-			}
-		}
 		
-		x.draw = function() {
-			collection.empty();
-			var alreadyOnThePage = 0;
-			var alreadyNow = 0;
-			$.each(storage, function(it, el) {
-				if(alreadyNow > ((pageNow-1)*settings.perPage-1) && alreadyOnThePage < settings.perPage) {
-					x.create(el);
-					alreadyOnThePage++;
-				}
-				alreadyNow++;
-			});	
-			if(alreadyOnThePage == 0 && alreadyNow > 0) {
-				if(pageNow > 0) pageNow--;
-				x.draw();
-			}
+		x.add = function(element) {
+			$.each(element, function(it, el) {
+				x.create(el);
+			});
+			x.sort();
 		}
 		
 		x.create = function(obj) {
-			if(obj) collection.append(Mustache.render(collection_prototype, obj));
+			if(obj) {
+				collection.append(Mustache.render(collection_prototype, obj));
+				source[obj.id] = obj;
+			}
 		}
 
-		if(settings.remove) x.remove = settings.remove;
+		if(settings && settings.remove) {
+			x.remove = settings.remove;
+		}
 		
 		x.change = function() {}
+		
+		x.get = function(id) {
+			return source[id];
+		}
 
 		x.empty = function(func) {
 			collection.empty();
 			if(func) func();
 		}	
 		
-		function makePaging() {
-			var collectionPaging = x.pgHandler.find('.collectionPaging');
-			collectionPaging.empty();
-			if(homanyItems > settings.perPage) {
-				x.pgHandler.removeClass('index');
-				var howManyPages = Math.ceil(homanyItems/settings.perPage);
-				var pageLinks = '';
-				for(i = 1; i <= howManyPages; i++) {
-					pageLinks += '<span class="button pageButton'+(i == pageNow ? ' pageNowButton': '')+'" rel="'+i+'">'+i+'</span>';
-				}
-				collectionPaging.html(pageLinks);
-			}
-			if(howmanyItems <= settingsPerPage) {
-				x.pgHandler.addClass('index');
-			}
+		x.sort = function() {
+			$.each(collection.find('.child'), function(key, value) {
+				var parent = $(this).attr('rel');
+				collection.find('div#' + parent).after($(value));
+			});
 		}
 		
 		collection.empty();
@@ -872,7 +837,7 @@ String.prototype.replaceAll = function( token, newToken, ignoreCase ) {
     };
 	
 	$.fn.collection.defaults = {
-		'handler': true,
+		'handler': false,
 		'perPage': 6,
 		'pageAtStart': 1
 	}
