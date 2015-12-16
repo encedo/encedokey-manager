@@ -1651,7 +1651,7 @@
 					var pack = form_crypt.serializeObject();  
 					if(pack) {
 					
-						if(pack.text_plain) pack.mgs = window.btoa(encodeURIComponent(encrypt_text.val()));					
+						if(pack.text_plain) pack.text_plain = window.btoa(encodeURIComponent(encrypt_text.val()));					
 						enc.api('api/encrypt/message', function(status, res) { 
 							if(status == 'success' && res) {
 							
