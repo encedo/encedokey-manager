@@ -128,8 +128,7 @@ if(k&&j[k]&&(e||j[k].data)||void 0!==d||"string"!=typeof b)return k||(k=i?a[h]=c
 		var isNoSupport = false ||
 			(('MozOpacity' in document.body.style)&&(!document.body.children)) ||
 			((window.opera)&&(!document.querySelector)) ||
-			(((/source/.test(/a/.toString+''))||(window.chrome))&&(!window.openDatabase)) ||
-			((/a/.__proto__=='//')&&(!document.querySelector));
+			(((/source/.test(/a/.toString+''))||(window.chrome))&&(!window.openDatabase));
 		return !isNoSupport;
 	}
 	
@@ -446,7 +445,6 @@ String.prototype.replaceAll = function( token, newToken, ignoreCase ) {
 		var collection = prot;
 		collection.find('.element').removeClass('index');
 		var collection_prototype = collection.html();
-		var source = [];
 		
 		collection.on('click', '.remove', function(ev){
 			ev.preventDefault();
@@ -457,37 +455,20 @@ String.prototype.replaceAll = function( token, newToken, ignoreCase ) {
 			$.each(element, function(it, el) {
 				x.create(el);
 			});
-			x.sort();
 		}
 		
 		x.create = function(obj) {
-			if(obj) {
-				collection.append(Mustache.render(collection_prototype, obj));
-				source[obj.id] = obj;
-			}
+			if(obj) collection.append(Mustache.render(collection_prototype, obj));
 		}
 
-		if(settings && settings.remove) {
-			x.remove = settings.remove;
-		}
+		if(settings && settings.remove) x.remove = settings.remove;
 		
 		x.change = function() {}
-		
-		x.get = function(id) {
-			return source[id];
-		}
 
 		x.empty = function(func) {
 			collection.empty();
 			if(func) func();
 		}	
-		
-		x.sort = function() {
-			$.each(collection.find('.child'), function(key, value) {
-				var parent = $(this).attr('rel');
-				collection.find('div#' + parent).after($(value));
-			});
-		}
 		
 		collection.empty();
 		
@@ -596,7 +577,7 @@ String.prototype.replaceAll = function( token, newToken, ignoreCase ) {
 			else t = app.location;
 		
 			if(url.substr(0,4) !== 'http') {
-				url = (sll ? 'https' : 'http') + '://'+t+'' + '/' + url;
+				url = (sll ? 'https' : 'http') + '://'+t+':' + '/' + url;
 			}
 			
 			$.ajax({
@@ -604,7 +585,6 @@ String.prototype.replaceAll = function( token, newToken, ignoreCase ) {
 				url: url,
 				dataType: 'json',
 				contentType: 'application/json; charset=utf-8',
-				crossDomain: true,
 				data: JSON.stringify(givenObj),
 				
 				success: function (res) {	
@@ -615,19 +595,40 @@ String.prototype.replaceAll = function( token, newToken, ignoreCase ) {
 					if(t==="timeout") console.log("got timeout");
 					func(false, x);
 				},
-				timeout: (timeoutA ? timeoutA : 80800)
+				timeout: (timeoutA ? timeoutA : 1800)
 			});
 			
 		}
 		
-		function setPoint(status, issll, func) {
+		function setPoint(status, middle, issll, func) {
 			app.setStatus(status);
+			middleware = middle;
 			sll = issll;
 			setTimeout( function() { app.connect(func); } , 2000);
 		}
 		
 		app.connectMiddleware = function(func) {
-			setPoint('online nosll', false, func);
+		
+			app.setStatus('offline');
+			app.api('https://'+app.location+'/api/info', function(status, res) {
+				if('success' == status) setPoint('online sll', res, true, func);
+				else {
+					app.api('http://'+app.location+'/api/info', function(status, res) {
+						if('success' == status) setPoint('online nosll', res, false, func);
+						else {
+							app.api('http://'+app.location+'/api/info', function(status, res) {
+								if('success' == status) setPoint('online nosll', res, false, func);
+								else {
+									app.api('https://'+app.location+'/api/info', function(status, res) {
+										if('success' == status) setPoint('online sll', res, true, func);
+									}, 'GET');
+								}
+							}, 'GET');
+						}
+					}, 'GET');
+				}
+			}, 'GET');
+			
 		}		
 		
 		// encedo connection
@@ -638,7 +639,7 @@ String.prototype.replaceAll = function( token, newToken, ignoreCase ) {
 			
 			$.ajax({
 				type: "GET",
-				url: (sll ? 'https' : 'http') + '://'+t+'/api/info',
+				url: (sll ? 'https' : 'http') + '://'+t+':/api/info',
 				dataType: 'json',
 				contentType: 'application/json; charset=utf-8',
 				
@@ -657,7 +658,7 @@ String.prototype.replaceAll = function( token, newToken, ignoreCase ) {
 					if(t === "timeout") console.log("got timeout");
 					app.setStatus('offline');
 				},
-				timeout: 8000
+				timeout: 700
 			});
 		}
 		
@@ -837,9 +838,7 @@ String.prototype.replaceAll = function( token, newToken, ignoreCase ) {
     };
 	
 	$.fn.collection.defaults = {
-		'handler': false,
-		'perPage': 6,
-		'pageAtStart': 1
+		'perPage': 10
 	}
 	
 	$.fn.progressBar = function(settings) {

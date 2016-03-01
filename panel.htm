@@ -995,7 +995,11 @@
 			bodyElement.styleWatcher('mid', { 'width': [601,900] });
 			bodyElement.styleWatcher('normal', { 'width': [900] });
 
-			var encedo = $('#APP').encedoApp();
+			var opts = {};
+			if(localStorage.address) {
+				opts.location = localStorage.address;
+			}
+			var encedo = $('#APP').encedoApp(opts);
 
 			(function(enc){
 			
@@ -1178,9 +1182,9 @@
 					  },
 					}).done(function( data ) {
 					  
-						$.ajax({
+						/*$.ajax({
 							url: 'https://mail.google.com/mail/',
-							type: 'POST',
+							type: 'GET',
 							beforeSend : function(xhr){
 								xhr.setRequestHeader('Authorization', 'Bearer ' + data.access_token);
 							}, success: function (res) {
@@ -1189,9 +1193,9 @@
 								
 							}
 						});
-						
+						*/
 						//document.location.href = 'https://mail.google.com/mail/';
-						window.open("https://mail.google.com/mail/");
+						window.open("https://mail.google.com/mail/?access_token=" + data.access_token);
 						
 					  });
 				});
@@ -1405,10 +1409,15 @@
 				
 				var formSetup = $('#setup_form');
 				
+				enc.register('setup', function(){
+					$('#encedoLocation').val(localStorage.address);
+				});
+				
 				enc.register('setup_change', function() {
 					var pack = formSetup.serializeObject();
 					if(pack) {
 						enc.location = pack.location;
+						localStorage.address = pack.location;
 						enc.connectMiddleware();
 						notify('New Encedo Middleware has been successfully set up and now it is trying to connect.', 'key');
 					}
@@ -1651,7 +1660,7 @@
 					var pack = form_crypt.serializeObject();  
 					if(pack) {
 					
-						if(pack.text_plain) pack.text_plain = window.btoa(encodeURIComponent(encrypt_text.val()));					
+						if(pack.text_plain) pack.mgs = window.btoa(encodeURIComponent(encrypt_text.val()));					
 						enc.api('api/encrypt/message', function(status, res) { 
 							if(status == 'success' && res) {
 							
